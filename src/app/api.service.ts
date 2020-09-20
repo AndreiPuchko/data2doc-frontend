@@ -16,8 +16,7 @@ export class ApiService {
   }
 
   public sendFiles(fd) {
-    return this.http.post(this.apiURL+"merge_files", fd);
+    return this.http.post(this.apiURL+"data2doctest", fd);
   }
-
 
 }

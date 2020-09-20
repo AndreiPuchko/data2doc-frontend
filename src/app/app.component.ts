@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import { environment } from '../environments/environment';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -26,8 +26,32 @@ export class AppComponent {
     return true;
   }
  
+  ngOnInit(){
+    this.downloadSampleFiles();
+  }
+
   data2doc(){
-    // this.filesDz[0].stream(). text().then(value => alert(value))
+    // this.filesDz[0].text().then(val=>alert(val));
+
+    let fd: FormData = new FormData();
+    for (let i = 0; i < this.filesDz.length; i++){
+      fd.append('file', this.filesDz[i], this.filesDz[i].name);
+    }
+    // this.http.post(this.baseUrl+"data2doctest",fd).subscribe(data => {alert(123333)}, error => console.log("res") );
+    
+    // this.apiService.sendFiles(fd).subscribe(data => {alert(123)}, error => console.log("res") );
+
+    this.apiService.sendFiles(fd).subscribe(
+      data => {
+        console.log('Sent successfully.');
+      },
+      error => {
+        console.log('The given data was invalid.');
+      },
+      () => {
+        //
+      }
+    );    
     }
 
     dropSampleFileContent(fileContent:string,filetype:string){
@@ -42,9 +66,9 @@ export class AppComponent {
   }
 
   downloadSampleFiles(){
-    // this.getSample("txt");
+    this.getSample("txt");
     this.getSample("xlsx");
-    // this.getSample("docx");
+    this.getSample("docx");
   }
 
   onSelectDz(event) {
