@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title></title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+  <div class="page-container" > 
+    <header style="height:100%">
+      <div style="height:100%" fxLayout="row" fxLayoutAlign="space-between">
+        <button  class="menu-button" (click)="data2doc()">
+          [Convert data 2 doc]
+        </button>
+        <button  class="menu-button" >
+          <a href="{{baseUrl}}getfile"> Download2</a>
+        </button>
+         View sample files:
+        <button  class="menu-button" >
+          <a class="" href="{{baseUrl}}samplefile/docx">DOCX</a>
+        </button>
+        <button  class="menu-button" >
+            <a href="{{baseUrl}}samplefile/xlsx">XLSX</a>
+        </button>
+        <button  class="menu-button" (click)="downloadSampleFiles()">
+          Download sample files
+        </button>
+      </div>
+    </header>
+  </div>
+  
+  <div fxLayout="row" fxLayoutAlign="space-between">
+  <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true">
+    <ngx-dropzone-label>Drop both DOCX and XLSX files to this area or click to select!</ngx-dropzone-label>
+    <ngx-dropzone-preview *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
+      <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+    </ngx-dropzone-preview>
+  </ngx-dropzone>
+  </div>  
+</body>
+</html>
