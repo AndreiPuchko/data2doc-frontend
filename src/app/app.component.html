@@ -11,17 +11,14 @@
     <header style="height:100%">
       <div style="height:100%" fxLayout="row" fxLayoutAlign="space-between">
         <button  class="menu-button" (click)="data2doc()">
-          [Convert data 2 doc]
-        </button>
-        <button  class="menu-button" >
-          <a href="{{baseUrl}}getfile"> Download2</a>
+          Convert data 2 doc
         </button>
          View sample files:
-        <button  class="menu-button" >
-          <a class="" href="{{baseUrl}}samplefile/docx">DOCX</a>
+        <button  class="menu-button" (click)='showSample("docx")'> DOCX
         </button>
-        <button  class="menu-button" >
-            <a href="{{baseUrl}}samplefile/xlsx">XLSX</a>
+        <button  class="menu-button" (click)="showSample('xlsx')"> XLSX
+  <!--          <a class="" href="{{baseUrl}}samplefile/docx">DOCX</a>
+            <a href="{{baseUrl}}samplefile/xlsx">XLSX</a>-->
         </button>
         <button  class="menu-button" (click)="downloadSampleFiles()">
           Download sample files
