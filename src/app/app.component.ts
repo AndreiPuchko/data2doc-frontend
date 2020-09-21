@@ -16,16 +16,16 @@ export class AppComponent {
 
   constructor(private apiService: ApiService,private http: HttpClient){}
   
-  canDrop(fileName:string):boolean {
+  dropFile(file_object:File) {
     var fileType;
-    fileType = fileName.slice(-3).toLowerCase();
+    fileType = file_object.name.slice(-4).toLowerCase();
     for (let i = 0; i < this.filesDz.length; i++){
-      if (fileType===this.filesDz[i].name.slice(-3).toLowerCase())
-        return false;
+      if (fileType===this.filesDz[i].name.slice(-4).toLowerCase())
+        this.filesDz.splice(i,1);
     }
-    return true;
+    this.filesDz.push(file_object)
   }
- 
+  
   ngOnInit(){
     this.downloadSampleFiles();
   }
@@ -35,47 +35,46 @@ export class AppComponent {
 
     let fd: FormData = new FormData();
     for (let i = 0; i < this.filesDz.length; i++){
+      // console.log(this.filesDz[i].size);
+      // console.log(this.filesDz[i]);
       fd.append('file', this.filesDz[i], this.filesDz[i].name);
     }
     // this.http.post(this.baseUrl+"data2doctest",fd).subscribe(data => {alert(123333)}, error => console.log("res") );
     
     // this.apiService.sendFiles(fd).subscribe(data => {alert(123)}, error => console.log("res") );
-
+    
     this.apiService.sendFiles(fd).subscribe(
       data => {
-        console.log('Sent successfully.');
-      },
+                console.log('Sent successfully.'+data['content']);
+              },
       error => {
-        console.log('The given data was invalid.');
-      },
+                console.log('The given data was invalid.');
+              },
       () => {
-        //
-      }
+            //
+            }
     );    
     }
 
-    dropSampleFileContent(fileContent:string,filetype:string){
-      // let decodedFileContent=atob(fileContent);
-      let file_object = new File([atob(fileContent)], 'sample.'+filetype, { type: filetype, lastModified:Date.now()});
-      if (this.canDrop(file_object.name)===true){
-        this.filesDz.push(file_object);
-      }
-    }
+  dropSampleFileContent(fileContent:string,filetype:string){
+    // console.log(atob(fileContent));
+    let file_object = new File([fileContent], 'sample.'+filetype, { type: filetype, lastModified:Date.now()});
+    console.log(file_object.size);
+    this.dropFile(file_object);
+  }
   getSample(filetype:string){
-    this.apiService.downloadSampleFileContent(filetype).subscribe(data =>this.dropSampleFileContent(data,filetype),error=> alert("Download samle file error!"));
+    this.apiService.downloadSampleFileContent(filetype).subscribe(data =>this.dropSampleFileContent(data,filetype),error=> alert("Download sample file error!"));
   }
 
   downloadSampleFiles(){
-    this.getSample("txt");
+    // this.getSample("txt");
     this.getSample("xlsx");
     this.getSample("docx");
   }
 
   onSelectDz(event) {
     for (let i = 0; i < event.addedFiles.length; i++) {
-      if (this.canDrop(event.addedFiles[i].name)===true){
-        this.filesDz.push(event.addedFiles[i]);
-      }
+      this.dropFile(event.addedFiles[i]);
     }
   }
   
