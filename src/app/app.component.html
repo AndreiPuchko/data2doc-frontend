@@ -7,33 +7,37 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-  <div class="page-container" > 
+  <div class="page-container" align="center">
+    <a style="align-content: center;padding: 10px ;">
+    Drop both DOCX and XLSX files to this area or click to select
+    </a>
+    <div  >
+      <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
+        <ngx-dropzone-label class="dzl">Drop both DOCX and XLSX files to area below or click to select!</ngx-dropzone-label>        
+        <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
+          <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>
+        </ngx-dropzone-preview>
+      </ngx-dropzone>
+    </div>
+    
     <header style="height:100%">
-      <div style="height:100%" fxLayout="row" fxLayoutAlign="space-between">
-        <button  class="menu-button" (click)="data2doc()">
+      <div style="height:100%;" fxLayout="column" fxLayoutAlign="space-between">
+        <button class="menu-button" (click)="data2doc()">
           Convert data 2 doc
         </button>
-         View sample files:
-        <button  class="menu-button" (click)='showSample("docx")'> DOCX
-        </button>
-        <button  class="menu-button" (click)="showSample('xlsx')"> XLSX
-  <!--          <a class="" href="{{baseUrl}}samplefile/docx">DOCX</a>
-            <a href="{{baseUrl}}samplefile/xlsx">XLSX</a>-->
-        </button>
-        <button  class="menu-button" (click)="downloadSampleFiles()">
-          Download sample files
-        </button>
+        <div>
+          View sample files:
+          <section style="display: flex;">
+            <button  class="menu-button" (click)='downloadSample("docx")'>DOCX</button>
+            <button  class="menu-button" (click)="downloadSample('xlsx')">XLSX</button>
+          </section>
+        </div>
+        <div>
+          <button  class="menu-button" (click)="downloadSampleFiles()">Reload sample files</button>
+        </div>
+  
       </div>
     </header>
   </div>
-  
-  <div fxLayout="row" fxLayoutAlign="space-between">
-  <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true">
-    <ngx-dropzone-label>Drop both DOCX and XLSX files to this area or click to select!</ngx-dropzone-label>
-    <ngx-dropzone-preview *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
-      <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
-    </ngx-dropzone-preview>
-  </ngx-dropzone>
-  </div>  
 </body>
 </html>

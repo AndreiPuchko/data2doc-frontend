@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
-import { environment } from '../environments/environment';
-import { HttpClient} from '@angular/common/http';
+// import { environment } from '../environments/environment';
+// import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,36 +12,26 @@ import { HttpClient} from '@angular/common/http';
 export class AppComponent {
   title = 'frontend';
   filesDz: File[] = [];
-  baseUrl = environment.baseUrl;
+  // baseUrl = environment.baseUrl;
 
-  constructor(private apiService: ApiService,private http: HttpClient){}
+  constructor(private apiService: ApiService){}
 
   ngOnInit(){
     this.downloadSampleFiles();
   }
 
-  sampleDocx(){
-    this.apiService.downloadSampleFileContent("docx").subscribe(data=>{
-      let blob = new File([data], "sample.docx");
-      let url = window.URL.createObjectURL(blob);
-      window.location.href = url;
-    })
+  downloadFile(blob:File){
+    let url = window.URL.createObjectURL(blob);
+    var anchor = document.createElement("a");
+    anchor.download = blob.name;
+    anchor.href = url;
+    anchor.click();        
   }
-  sampleXlsx(){
-    this.apiService.downloadSampleFileContent("xlsx").subscribe(data=>{
-      let blob = new File([data], "sample.xlsx");
-      let url = window.URL.createObjectURL(blob);
-      window.location.href = url;
-    })
-  }
-
 
   downloadResult(key){
     this.apiService.downloadResultFile(key).subscribe(data => {
-        console.log("gogogo");
         let blob = new File([data], "result.docx");
-        let url = window.URL.createObjectURL(blob);
-        window.location.href = url;
+        this.downloadFile(blob);
       },error=>{console.log("result file downloading error")});
   }
 
@@ -64,14 +54,15 @@ export class AppComponent {
     );    
     }
 
-    showSample(filetype:string){
-      this.apiService.downloadSampleFileContent(filetype).subscribe(data=>{
-        let blob = new File([data], "sample."+filetype);
-        let url = window.URL.createObjectURL(blob);
-        window.location.href = url;
-      })
-    }
-  
+  downloadSample(filetype:string){
+    this.apiService.downloadSampleFile(filetype).subscribe(data=>{
+      let blob = new File([data], "sample."+filetype);
+      this.downloadFile(blob);      
+      // let url = window.URL.createObjectURL(blob);
+      // window.location.href = url;
+      // window.location.assign(url);
+    })
+  }
 
   dropSampleFileContent(fileContent:string,filetype:string){
     // console.log(atob(fileContent));
@@ -80,7 +71,7 @@ export class AppComponent {
   }
 
   getSample(filetype:string){
-    this.apiService.downloadSampleFileContent(filetype).subscribe(data =>this.dropSampleFileContent(data,filetype),error=> alert("Download sample file error!"));
+    this.apiService.downloadSampleFile(filetype).subscribe(data =>this.dropSampleFileContent(data,filetype),error=> console.log("Download sample file error!"));
   }
 
   downloadSampleFiles(){
