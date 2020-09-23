@@ -8,36 +8,26 @@
 </head>
 <body>
   <div class="page-container" align="center">
-    <a style="align-content: center;padding: 10px ;">
-    Drop both DOCX and XLSX files to this area or click to select
-    </a>
-    <div  >
+    <div class="files">
+      Drop both DOCX and XLSX files to the area below or click it to select!
       <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
-        <ngx-dropzone-label class="dzl">Drop both DOCX and XLSX files to area below or click to select!</ngx-dropzone-label>        
+        <ngx-dropzone-label class="dzl">Drop both DOCX and XLSX files to this area or click to select</ngx-dropzone-label>
         <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
           <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>
         </ngx-dropzone-preview>
       </ngx-dropzone>
     </div>
-    
-    <header style="height:100%">
-      <div style="height:100%;" fxLayout="column" fxLayoutAlign="space-between">
-        <button class="menu-button" (click)="data2doc()">
-          Convert data 2 doc
-        </button>
-        <div>
-          View sample files:
-          <section style="display: flex;">
-            <button  class="menu-button" (click)='downloadSample("docx")'>DOCX</button>
-            <button  class="menu-button" (click)="downloadSample('xlsx')">XLSX</button>
-          </section>
+    <div class="buttons" fxLayout="column" fxLayoutAlign="space-between">
+      <button class="button1" (click)="data2doc()">Convert data 2 doc</button>
+      <div>
+        View sample files:
+        <div style="display: flex;">
+          <button  class="button" (click)='downloadSample("docx")'>DOCX</button>
+          <button  class="button" (click)="downloadSample('xlsx')">XLSX</button>
         </div>
-        <div>
-          <button  class="menu-button" (click)="downloadSampleFiles()">Reload sample files</button>
-        </div>
-  
       </div>
-    </header>
+        <button class="button1" (click)="downloadSampleFiles()">Reload sample files</button>
+    </div>
   </div>
 </body>
 </html>

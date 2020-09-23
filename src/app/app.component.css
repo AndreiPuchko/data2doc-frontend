@@ -1,34 +1,71 @@
 * {
     box-sizing: border-box;
 } 
-.menu-button 
-    {
-    background: rgb(115, 207, 153);
-    height: 90px;
-    margin: 5px 0px;
-    padding: 5px;
-    width: 100%;
-    }
+body {
+    background-color: rgb(182, 204, 245);
+}
+
 .page-container
     {
     max-width: 1000px;
     width:100%;
+    height: fit-content;
     margin: auto;
-    height: 100%;
-    background-color: cornflowerblue;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 100% 0%;
+    column-gap: 2%;
+    row-gap: 2%;
     }
-.header
+
+.files{
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
+}
+.buttons{
+    position:center;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    width:100%;
+    
+    display: grid;
+    grid-template-columns: 90%;
+
+}
+
+@media  (min-width: 1000px) {
+    .page-container{
+        grid-template-columns: 50% 50%;
+    }
+    .buttons{ 
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        }
+}
+
+button 
     {
-        margin: auto; 
+    background: rgb(115, 207, 153);
+    padding: 2%;
+    margin:2%;
+    font-size: 16px;
+    width: 100%;
     }
-.dz{
-    background: rgb(32, 134, 194);
-    margin: auto;
-}
-.dzl{
-    margin: 5px;
-    width:auto;
-}
-.dzp{
-    width:50px;
-}
+button:hover {
+    background-color: #ddd;
+    color: black;
+    }
+.button1
+    {
+    width: 96%;
+    }
+    
+ngx-dropzone
+    {
+        background: rgb(151, 196, 223);
+    }
