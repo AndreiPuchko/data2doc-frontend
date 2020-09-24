@@ -19,14 +19,14 @@
     </div>
     <div class="buttons" fxLayout="column" fxLayoutAlign="space-between">
       <button class="button1" (click)="data2doc()">Convert data 2 doc</button>
-      <div>
-        View sample files:
-        <div style="display: flex;">
-          <button  class="button" (click)='downloadSample("docx")'>DOCX</button>
-          <button  class="button" (click)="downloadSample('xlsx')">XLSX</button>
+      <div >
+        View example files:
+        <div style="display: flex;margin: auto;">
+          <button class="button" (click)='downloadExample("docx")'>DOCX</button>
+          <button class="button" (click)="downloadExample('xlsx')">XLSX</button>
         </div>
       </div>
-        <button class="button1" (click)="downloadSampleFiles()">Reload sample files</button>
+      <button class="button1" (click)="downloadExampleFiles()">Reload example files</button>
     </div>
   </div>
 </body>

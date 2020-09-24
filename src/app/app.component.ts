@@ -12,12 +12,10 @@ import { ApiService } from './api.service';
 export class AppComponent {
   title = 'frontend';
   filesDz: File[] = [];
-  // baseUrl = environment.baseUrl;
-
   constructor(private apiService: ApiService){}
 
   ngOnInit(){
-    this.downloadSampleFiles();
+    this.downloadExampleFiles();
   }
 
   downloadFile(blob:File){
@@ -54,30 +52,25 @@ export class AppComponent {
     );    
     }
 
-  downloadSample(filetype:string){
-    this.apiService.downloadSampleFile(filetype).subscribe(data=>{
-      let blob = new File([data], "sample."+filetype);
+  downloadExample(filetype:string){
+    this.apiService.downloadExampleFile(filetype).subscribe(data=>{
+      let blob = new File([data], "example."+filetype);
       this.downloadFile(blob);      
-      // let url = window.URL.createObjectURL(blob);
-      // window.location.href = url;
-      // window.location.assign(url);
     })
   }
 
-  dropSampleFileContent(fileContent:string,filetype:string){
-    // console.log(atob(fileContent));
-    let file_object = new File([fileContent], 'sample.'+filetype, { type: filetype, lastModified:Date.now()});
+  dropExampleFileContent(fileContent:string,filetype:string){
+    let file_object = new File([fileContent], 'example.'+filetype, { type: filetype, lastModified:Date.now()});
     this.dropFile(file_object);
   }
 
-  getSample(filetype:string){
-    this.apiService.downloadSampleFile(filetype).subscribe(data =>this.dropSampleFileContent(data,filetype),error=> console.log("Download sample file error!"));
+  getExample(filetype:string){
+    this.apiService.downloadExampleFile(filetype).subscribe(data =>this.dropExampleFileContent(data,filetype),error=> console.log("Download example file error!"));
   }
 
-  downloadSampleFiles(){
-    // this.getSample("txt");
-    this.getSample("xlsx");
-    this.getSample("docx");
+  downloadExampleFiles(){
+    this.getExample("xlsx");
+    this.getExample("docx");
   }
 
   dropFile(file_object:File) {

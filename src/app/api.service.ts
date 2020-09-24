@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
-// import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +14,8 @@ export class ApiService {
 		return this.http.get(this.apiURL+"result/"+key, {responseType: 'blob'});
   }
 
-
-  public downloadSampleFile(filetype:string): any {
-		return this.http.get(this.apiURL+"samplefile/"+filetype, {responseType: 'blob'});
+  public downloadExampleFile(filetype:string): any {
+		return this.http.get(this.apiURL+"examplefile/"+filetype, {responseType: 'blob'});
   }
 
   public sendFiles(fd) {
