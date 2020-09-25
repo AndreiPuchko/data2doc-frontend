@@ -10,7 +10,7 @@ import { ApiService } from './api.service';
 })
 
 export class AppComponent {
-  title = 'frontend';
+  title = 'data2doc.net';
   filesDz: File[] = [];
   constructor(private apiService: ApiService){}
 
