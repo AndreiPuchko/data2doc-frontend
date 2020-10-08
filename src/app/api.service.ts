@@ -22,4 +22,8 @@ export class ApiService {
     return this.http.post<any>(this.apiURL+"data2doc", fd);
   }
 
+  public getRowCount() {
+    return this.http.get(this.apiURL+"rowcount",{});
+  }
+
 }

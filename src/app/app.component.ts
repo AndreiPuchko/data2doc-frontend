@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { ApiService } from './api.service';
 // import { environment } from '../environments/environment';
 // import { HttpClient} from '@angular/common/http';
@@ -11,46 +11,70 @@ import { ApiService } from './api.service';
 
 export class AppComponent {
   title = 'data2doc.net';
+  rowCount = 0;
   filesDz: File[] = [];
-  constructor(private apiService: ApiService){}
+  showWaitWindow=false;
+
+  constructor(private apiService: ApiService){ }
 
   ngOnInit(){
     this.downloadExampleFiles();
+    this.getProcessedFilesCounter();
+  }
+
+  getProcessedFilesCounter(){
+    this.apiService.getRowCount().subscribe(data => 
+      {
+        this.rowCount=data['rowCount'];
+        // console.log(data);
+      }
+      )    
   }
 
   downloadFile(blob:File){
     let url = window.URL.createObjectURL(blob);
     var anchor = document.createElement("a");
+    let n: number;
+    this.showWaitWindow=false;
     anchor.download = blob.name;
     anchor.href = url;
-    anchor.click();        
-  }
+    anchor.click();
+    }
 
   downloadResult(key){
     this.apiService.downloadResultFile(key).subscribe(data => {
         let blob = new File([data], "result.docx");
         this.downloadFile(blob);
-      },error=>{console.log("result file downloading error")});
+        this.getProcessedFilesCounter();
+      },
+      error=>{console.log("result file downloading error")});
   }
 
   data2doc(){
-    let fd: FormData = new FormData();
-    for (let i = 0; i < this.filesDz.length; i++){
-      fd.append('file', this.filesDz[i], this.filesDz[i].name);
+    if (this.filesDz.length===2){
+      this.showWaitWindow=true;
+      let fd: FormData = new FormData();
+  
+      for (let i = 0; i < this.filesDz.length; i++){
+        fd.append('file', this.filesDz[i], this.filesDz[i].name);
+      }
+
+      this.apiService.sendFiles(fd).subscribe(
+        data => {
+                  console.log('files sent successfully');
+                  this.downloadResult(data['key']);
+                },
+        error => {
+                  console.log('failed files download');
+                  this.showWaitWindow=false;
+                },
+        () => {
+              //
+              }
+      );    
     }
-    this.apiService.sendFiles(fd).subscribe(
-      data => {
-                console.log('files sent successfully');
-                this.downloadResult(data['key']);
-              },
-      error => {
-                console.log('failed files download');
-              },
-      () => {
-            //
-            }
-    );    
-    }
+    else alert("I need 2 files");
+  }
 
   downloadExample(filetype:string){
     this.apiService.downloadExampleFile(filetype).subscribe(data=>{
@@ -92,4 +116,5 @@ export class AppComponent {
   onRemoveDz(event) {
     this.filesDz.splice(this.filesDz.indexOf(event), 1);
   }
+
 }

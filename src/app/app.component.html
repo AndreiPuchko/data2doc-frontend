@@ -6,28 +6,36 @@
   <title></title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
-<body>
-  <div class="page-container" align="center">
-    <div class="files">
-      Drop both DOCX and XLSX files to the area below or click it to select!
-      <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
-        <ngx-dropzone-label class="dzl">Drop both DOCX and XLSX files to this area or click to select</ngx-dropzone-label>
-        <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
-          <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>
-        </ngx-dropzone-preview>
-      </ngx-dropzone>
-    </div>
-    <div class="buttons" fxLayout="column" fxLayoutAlign="space-between">
-      <button class="button1" (click)="data2doc()">Convert data 2 doc</button>
-      <div >
-        View example files:
-        <div style="display: flex;margin: auto;">
-          <button class="button" (click)='downloadExample("docx")'>DOCX</button>
-          <button class="button" (click)="downloadExample('xlsx')">XLSX</button>
+  <body>
+    <!-- <div><home></home></div> -->
+    <div [hidden]="!showWaitWindow"><wait></wait></div>
+    <div class="page-container" align="center">
+      <div class="grid-container" align="center">
+        <div class="files">
+          Drop both DOCX and XLSX files to the area below or click it to select!
+          <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
+            <!-- <ngx-dropzone-label class="dzl">Drop both DOCX and XLSX files to this area or click to select</ngx-dropzone-label> -->
+            <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
+              <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
         </div>
+        <div class="buttons" >
+          <button class="button_single_on_row" (click)="data2doc()">Convert data 2 doc</button>
+          <div >
+            View example files:
+            <div style="display: flex;margin: auto;">
+              <button class="button" (click)='downloadExample("docx")'>DOCX</button>
+              <button class="button" (click)="downloadExample('xlsx')">XLSX</button>
+            </div>
+          </div>
+          <button class="button_single_on_row" (click)="downloadExampleFiles()">Reload example files</button>
+        </div>
+      </div>    
+      <div *ngIf="rowCount>0; then thenBlock"></div>
+      <div>
+      <ng-template #thenBlock>Files processed {{rowCount}}</ng-template>
       </div>
-      <button class="button1" (click)="downloadExampleFiles()">Reload example files</button>
     </div>
-  </div>
-</body>
+  </body>
 </html>

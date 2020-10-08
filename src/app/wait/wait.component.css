@@ -1,0 +1,27 @@
+.waitwindow {
+    position: fixed;
+    text-align: center;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    height:100%;
+    z-index: 1000;
+    background-color: rgba(182, 204, 245,0.5);
+    display: block;
+    align-items: center;
+ }
+ 
+ .centercontent{
+   display: inline-block;
+   vertical-align: middle;
+   margin: auto;
+   padding-top: 30%;
+
+ }
+ 
+ .closebutton {
+   color: rgb(34, 40, 197);
+   background-color: #d2e68a;
+   padding: 40%;
+ }

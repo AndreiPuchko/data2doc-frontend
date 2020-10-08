@@ -2,13 +2,17 @@
     box-sizing: border-box;
 } 
 body {
-    background-color: rgb(182, 204, 245);
+   
 }
 
 .page-container
     {
     max-width: 1000px;
+    margin: auto;
     width:100%;
+    }
+.grid-container{
+    background-image: url('../assets/data2doc.jpg');
     height: fit-content;
     margin: auto;
     height: auto;
@@ -16,37 +20,7 @@ body {
     grid-template-columns: 100% 0%;
     column-gap: 5%;
     row-gap: 5%;
-    }
-
-.files1{
-        grid-column: 1 / 1;
-        grid-row: 1 / 1;
 }
-.buttons{
-    position:center;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    width:100%;
-    
-    display: grid;
-    grid-template-columns: 90%;
-
-}
-
-@media  (min-width: 500px) {
-    .page-container{
-        grid-template-columns: 50% 50%;
-    }
-    .buttons{ 
-        grid-column-start: 2;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 1;
-        }
-}
-
 button 
     {
     background: rgb(115, 207, 153);
@@ -55,16 +29,37 @@ button
     margin:2%;
     width: 100%;
     }
+.buttons{
+    position:center;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    display: grid;
+    grid-template-columns: 90%;
+}
+/* horizontal */
+@media  (min-width: 500px) {
+    .grid-container{
+        grid-template-columns: 50% 50%;
+    }
+    .buttons{ 
+        padding: 10%;
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        }
+}
 button:hover {
     background-color: #ddd;
     color: black;
     }
-.button1
+.button_single_on_row
     {
     width: 96%;
     }
-    
 ngx-dropzone
     {
-        background: rgb(151, 196, 223);
+        background-color: rgba(255, 255, 255,0);
     }
