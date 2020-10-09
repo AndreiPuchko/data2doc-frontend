@@ -1,27 +1,37 @@
 .waitwindow {
     position: fixed;
-    text-align: center;
     margin: auto;
     top: 0;
     left: 0;
     right: 0;
-    height:100%;
+    padding: 30%;
+    height:30%;
     z-index: 1000;
     background-color: rgba(182, 204, 245,0.5);
     display: block;
     align-items: center;
  }
- 
- .centercontent{
-   display: inline-block;
-   vertical-align: middle;
-   margin: auto;
-   padding-top: 30%;
 
- }
  
  .closebutton {
    color: rgb(34, 40, 197);
-   background-color: #d2e68a;
-   padding: 40%;
+   background-color: #8ae69e;
+   width: 100%;
+   height: 100%;
  }
+.spinner{
+  align-content: center;
+}
+
+.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode="indeterminate"] {
+	animation: mat-progress-spinner-linear-rotate 3000ms linear infinite;
+}
+
+
+.mat-button {
+	cursor: pointer;
+	white-space: nowrap;
+	text-align: center;
+	line-height: 36px;
+	display: block ruby;
+}
