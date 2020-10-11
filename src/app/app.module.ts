@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 // import { LayoutModule } from '@angular/cdk/layout';
-// import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from './material.module';
 
@@ -26,7 +26,7 @@ import { PopupmessageComponent } from './popupmessage/popupmessage.component';
     NgxDropzoneModule,
     BrowserAnimationsModule,
     // LayoutModule,
-    // FlexLayoutModule,
+    FlexLayoutModule,
     MaterialModule,
   ],
   providers: [],

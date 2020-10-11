@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PopupmessageComponent } from './popupmessage/popupmessage.component';
 
 @Component({
   selector: 'app-root',
@@ -16,18 +14,8 @@ export class AppComponent {
   showWaitWindow = false;
 
   constructor(private apiService: ApiService,
-    public dialog: MatDialog) { }
+    ) { }
 
-  zzMess(text: string, titleText: string = "Message", okButtonText: string = "Ok") {
-    const dialogRef = this.dialog.open(PopupmessageComponent, {
-      width: '20%',
-      data: {
-        'messageText': text,
-        'titleText': titleText,
-        'okButtonText': okButtonText
-      }
-    });
-  }
 
   ngOnInit() {
     this.downloadExampleFiles();
@@ -85,7 +73,7 @@ export class AppComponent {
       );
     }
     else {
-      this.zzMess("I need 2 files","Not enough data!","Go on");
+      this.apiService.zzMess("I need 2 files", "Not enough data!", "Go on");
     }
 
   }

@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,13 +7,11 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  pos="start";
-  constructor() {}
+  pos = "start";
+  constructor(private apiService: ApiService,
+  ) { }
 
-  navBarCommand(command:string){
-    // if (this.pos=="start") {this.pos="end"}
-    
-    alert("Command is:"+command);
-    // this.zzMess("Command is:"+command,"Not enough data!","Go on");
+  navBarCommand(command: string) {
+    this.apiService.zzMess("Command is:" + command, "Command button clicked", "Go on");
   }
 }
