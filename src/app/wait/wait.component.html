@@ -1,8 +1,8 @@
-<div class="waitwindow">
-        <button mat-button class="closebutton" [disabled]="true">
-            Wait...
-            <!-- <div class="spinner"> -->
+<div fxFlex>
+    <h1 fxLayoutAlign="center center" mat-dialog-title>{{data.titleText}}</h1>
+    <div mat-dialog-content>
+        <div  style="padding:50px;">
             <mat-spinner></mat-spinner>
-            <!-- </div> -->
-        </button>
-</div>
+        </div>
+        {{data.messageText}}
+    </div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { WaitComponent } from './wait/wait.component';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +13,9 @@ export class AppComponent {
   title = 'data2doc.net';
   rowCount = 0;
   filesDz: File[] = [];
-  showWaitWindow = false;
 
   constructor(private apiService: ApiService,
-    ) { }
+  ) { }
 
 
   ngOnInit() {
@@ -25,7 +26,6 @@ export class AppComponent {
   getProcessedFilesCounter() {
     this.apiService.getRowCount().subscribe(data => {
       this.rowCount = data['rowCount'];
-      // console.log(data);
     }
     )
   }
@@ -33,8 +33,7 @@ export class AppComponent {
   downloadFile(blob: File) {
     let url = window.URL.createObjectURL(blob);
     var anchor = document.createElement("a");
-    let n: number;
-    this.showWaitWindow = false;
+    this.apiService.zzWaitClose();
     anchor.download = blob.name;
     anchor.href = url;
     anchor.click();
@@ -51,13 +50,11 @@ export class AppComponent {
 
   data2doc() {
     if (this.filesDz.length === 2) {
-      this.showWaitWindow = true;
+      this.apiService.zzWaitShow();
       let fd: FormData = new FormData();
-
       for (let i = 0; i < this.filesDz.length; i++) {
         fd.append('file', this.filesDz[i], this.filesDz[i].name);
       }
-
       this.apiService.sendFiles(fd).subscribe(
         data => {
           console.log('files sent successfully');
@@ -65,7 +62,7 @@ export class AppComponent {
         },
         error => {
           console.log('failed files download');
-          this.showWaitWindow = false;
+          this.apiService.waitWindow.close();
         },
         () => {
           //
@@ -75,7 +72,6 @@ export class AppComponent {
     else {
       this.apiService.zzMess("I need 2 files", "Not enough data!", "Go on");
     }
-
   }
 
   downloadExample(filetype: string) {
@@ -118,6 +114,4 @@ export class AppComponent {
   onRemoveDz(event) {
     this.filesDz.splice(this.filesDz.indexOf(event), 1);
   }
-
-
 }
