@@ -13,5 +13,6 @@ export class NavbarComponent {
     // if (this.pos=="start") {this.pos="end"}
     
     alert("Command is:"+command);
+    // this.zzMess("Command is:"+command,"Not enough data!","Go on");
   }
 }

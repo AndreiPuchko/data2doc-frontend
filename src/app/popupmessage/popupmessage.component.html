@@ -1,1 +1,7 @@
-<p>popupmessage works!</p>
+<h1 mat-dialog-title>{{data.titleText}}</h1>
+<div mat-dialog-content> 
+    {{data.messageText}}
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="closeMe()" color="primary">{{data.okButtonText}}</button>
+</div>
