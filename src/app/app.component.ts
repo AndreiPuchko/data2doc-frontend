@@ -117,4 +117,5 @@ export class AppComponent {
     this.filesDz.splice(this.filesDz.indexOf(event), 1);
   }
 
+
 }

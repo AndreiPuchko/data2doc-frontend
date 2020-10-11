@@ -1,22 +1,42 @@
+<ng-template #menuItems>
+  <button mat-button (click)='navBarCommand("w")'>Workspace</button>
+  <button mat-button (click)='navBarCommand("F")'>Features</button>
+  <button mat-button (click)='navBarCommand("G")'>Gallery</button>
+  <button mat-button (click)='navBarCommand("P")'>Pricing</button>
+  <button mat-button (click)='navBarCommand("C")'>Contact us</button>
+  <button mat-button (click)='navBarCommand("L")'>Login/Register</button>
+</ng-template>
+
+<ng-template #menuButton>
+  <button 
+  type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    data2doc
+  </button>
+</ng-template>
+
 <mat-sidenav-container class="sidenav-container">
-  <!-- <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+  <!-- vertical popup bar -->
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+    position="{{pos}}">
+    <mat-toolbar style="background-color:royalblue ;color:white;">
+      <ng-container [ngTemplateOutlet]="menuButton"></ng-container>
+    </mat-toolbar>
+    <mat-nav-list fxLayout="column" fxLayoutAlign="start" (click)="drawer.toggle()">
+        <ng-container [ngTemplateOutlet]="menuItems"></ng-container>
+        <button mat-button style="background-color:rgb(240, 240, 240)" 
+               >
+          <mat-icon aria-label="Side nav toggle icon">close</mat-icon>Close menu
+        </button>
     </mat-nav-list>
-  </mat-sidenav> -->
+  </mat-sidenav>
+  <!-- Horizontal bar -->
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button mat-icon-button>
-        <mat-icon aria-label="Side nav toggle icon">home</mat-icon>
-        data2doc
-      </button>
+      <ng-container [ngTemplateOutlet]="menuButton"></ng-container>
+      <div id="hMenu" fxFlex fxLayout="row" fxLayoutAlign="end" fxHide.xs>
+        <ng-container [ngTemplateOutlet]="menuItems"></ng-container>
+      </div>
     </mat-toolbar>
-    <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -12,7 +12,6 @@
       <div><app-navbar></app-navbar></div>
       <div class="grid-container" align="center">
         <div class="files">
-          <!--  -->
           <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
             <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
               <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>

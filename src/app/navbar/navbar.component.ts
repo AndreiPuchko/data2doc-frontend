@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {MatSpinner} from '@angular/material/progress-spinner'; 
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +6,12 @@ import {MatSpinner} from '@angular/material/progress-spinner';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  pos="start";
   constructor() {}
 
+  navBarCommand(command:string){
+    // if (this.pos=="start") {this.pos="end"}
+    
+    alert("Command is:"+command);
+  }
 }
