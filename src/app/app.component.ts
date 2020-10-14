@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
-import { MatDialogRef } from '@angular/material/dialog';
-import { WaitComponent } from './wait/wait.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +14,6 @@ export class AppComponent {
 
   constructor(private apiService: ApiService,
   ) { }
-
 
   ngOnInit() {
     this.downloadExampleFiles();

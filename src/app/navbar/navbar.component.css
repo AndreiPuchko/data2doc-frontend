@@ -1,6 +1,6 @@
-.sidenav-container {
+/* .sidenav-container {
   height: 100%;
-}
+} */
 
 .sidenav {
   width: 150px;
@@ -11,7 +11,13 @@
 }
 
 .mat-toolbar.mat-primary {
-  position: sticky;
+  position: fixed;
+  /* margin: 0 auto; */
   top: 0;
-  z-index: 1;
+  max-width: 1000px;
+  z-index: 1000;
 }
+
+/* mat-focus-indicator mat-icon-button mat-button-base ng-star-inserted{
+  width:140px;
+} */

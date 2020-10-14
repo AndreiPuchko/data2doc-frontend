@@ -1,37 +1,93 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title></title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
-  <body>
-    <!-- <div [hidden]="!showWaitWindow"><wait></wait></div> -->
-    <div class="page-container" align="center">
-      <div><app-navbar></app-navbar></div>
-      <div class="grid-container" align="center">
-        <div class="files">
-          <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
-            <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
-              <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>
-            </ngx-dropzone-preview>
-            <div style="font-size: 10pt;">Drop both DOCX and XLSX files to this area or click to select</div>
-          </ngx-dropzone>
-        </div>
-        <div class="buttons" >
-          <button mat-raised-button class="button_single_on_row" (click)="data2doc()">Convert data 2 doc</button>
-          <div >
-            View example files:
-            <div style="display: flex;margin: auto;">
-              <button mat-raised-button class="button2" (click)='downloadExample("docx")'>DOCX</button>
-              <button mat-raised-button class="button2" (click)="downloadExample('xlsx')">XLSX</button>
-            </div>
-          </div>
-          <button mat-raised-button class="button_single_on_row" (click)="downloadExampleFiles()">Reload example files</button>
-        </div>
-      </div>    
-      <div class="stat-footer" [hidden]="rowCount<=0">Files processed {{rowCount}}</div>
+
+<body>
+  <div class="page-container" align="center">
+    <div>
+      <app-navbar></app-navbar>
     </div>
-  </body>
+    <div class="workplace-container" align="center">
+      <div class="files">
+        <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
+          <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
+            <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+          <div style="font-size: 10pt;">Drop both DOCX and XLSX files to this area or click to select</div>
+        </ngx-dropzone>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button class="button_single_on_row" (click)="data2doc()">Convert data 2 doc</button>
+        <div>
+          View example files:
+          <div style="display: flex;margin: auto;">
+            <button mat-raised-button class="button2" (click)='downloadExample("docx")'>DOCX</button>
+            <button mat-raised-button class="button2" (click)="downloadExample('xlsx')">XLSX</button>
+          </div>
+        </div>
+        <button mat-raised-button class="button_single_on_row" (click)="downloadExampleFiles()">Reload example
+          files</button>
+      </div>
+    </div>
+    <div class="stat-footer" [hidden]="rowCount<=0">Files processed {{rowCount}}</div>
+    <h2 style="margin-top:15px;">Step-by-step guide.</h2>
+    <div class="explain-steps-container" name="tutorial">
+
+      <p><b>1. </b>Prepare the table data in an Excel spreadsheet.
+        You can place data in different sheets.
+        You can name the columns for convenience,
+        but you don't have to.
+      </p>
+      <a><img src="../assets/step01.png" alt="step01 picture"></a>
+      <p><b>2. </b>Prepare a template Word document.
+        Place sheet name surrounded by a # character
+        at the begining and end of the pieces you
+        want to fill with data from Excel. That is enough if you
+        are using columns letters and want to process all rows
+        of the sheet, go to the step <b>5</b>.
+      </p>
+      <a><img src="../assets/step02.png" alt="step01 picture"></a>
+
+      <p><b>3. </b>If you have specified columns names,
+        put the row number
+        containing the names after colon in
+        the start label of the fragment.
+        If you are using columns letters instead of the names
+        put 0 as the row number of names.
+      </p>
+      <a>picture</a>
+
+      <p><b>4. </b>To select rows range for processing, place the
+        start and end row numbers in the start label
+        after the names row number, using colon as separator. Omit
+        end row number for processing rows to the end.
+      </p>
+      <a>picture</a>
+
+      <p><b>5. </b>Place columns letters or names
+        surrounded by # character in their places
+        in the marked section.
+        A template can have as many fragments as you need.
+      </p>
+      <a>picture</a>
+
+      <p><b>6. </b>That is it. Upload two files to the
+        workspace on this page,
+        press the
+        <button mat-raised-button class="button_single_on_row" (click)="data2doc()" style="min-width: 0px;
+            min-height: 0px; width:auto;">
+          Convert data 2 doc</button> button in the workspace or here,
+        enjoy the resuslt.docx file.
+      </p>
+      <a>picture</a>
+    </div>
+  </div>
+</body>
+
 </html>

@@ -2,19 +2,39 @@
     {
     max-width: 1000px;
     margin: auto;
+    padding-top: 64px;
     width:100%;
     }
-.grid-container{
-    /* background-image: url('../assets/data2doc.jpg'); */
+.workplace-container, .explain-steps-container
+{
+    /* vertical */
     height: fit-content;
     margin: auto;
     height: auto;
     display: grid;
-    grid-template-columns: 100% 0%;
+    grid-template-columns: 100%;
     background-color: rgba(184, 223, 255,0.3);
-    /* column-gap: 0px;
-    row-gap: 0px; */
 }
+
+.explain-steps-container p{
+    padding: 20px;
+    text-align: justify;
+    font-size: large;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: wheat;
+
+}
+
+.explain-steps-container a{
+    max-width: 500px;
+    /* height:200px; */
+    align-items: center;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: wheat;
+}
+
 button 
     {
     background: rgb(18, 199, 93);
@@ -77,7 +97,8 @@ ngx-dropzone
 
 /* horizontal */
 @media  (min-width: 500px) {
-    .grid-container{
+    .workplace-container,
+    .explain-steps-container{
         grid-template-columns: 50% 50%;
     }
     .dz{
@@ -87,7 +108,6 @@ ngx-dropzone
         min-height: 160px !important;
         }
     .buttons{ 
-        /* padding: 10%; */
         grid-column-start: 2;
         grid-column-end: 2;
         grid-row-start: 1;
