@@ -1,11 +1,10 @@
 <ng-template #menuItems>
-  <button mat-button (click)='navBarCommand("w")'>Workspace</button>
-  <button mat-button href="#tutorial">Tutorial</button>
-  <button mat-button (click)='navBarCommand("G")'>Gallery</button>
-  <button mat-button (click)='navBarCommand("P")'>Pricing</button>
-  <button mat-button (click)='navBarCommand("C")'>Contact us</button>
-  <button mat-button (click)='navBarCommand("R")'>Register</button>
-  <button mat-button (click)='navBarCommand("L")'>Login</button>
+  <a mat-button href="#Workspace">Workspace</a>
+  <a mat-button href="#Tutorial">Tutorial</a>
+  <a mat-button href="#Gallery">Gallery</a>
+  <a mat-button href="#Pricing">Pricing</a>
+  <a mat-button href="#Contact us">Contact us</a>
+  <a mat-button (click)='navBarCommand("L")'>Login/Register</a>
 </ng-template>
 
 <ng-template #menuButton>
@@ -32,8 +31,7 @@
   <mat-sidenav-content fxStyle="center center">
     <mat-toolbar color="primary">
       <ng-container [ngTemplateOutlet]="menuButton"></ng-container>
-      <div id="hMenu" fxFlex fxLayout="row" fxLayoutAlign="end" fxHide.xs>
-        <div style="width:100px;"></div>
+      <div id="hMenu" fxFlex fxLayout="row" fxLayoutAlign="end">
         <ng-container [ngTemplateOutlet]="menuItems"></ng-container>
       </div>
     </mat-toolbar>

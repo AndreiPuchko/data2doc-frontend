@@ -3,32 +3,37 @@
     max-width: 1000px;
     margin: auto;
     padding-top: 64px;
+    text-align: center ;
     width:100%;
     }
-.workplace-container, .explain-steps-container
+
+   
+    .workplace-container, .tutorial-container
 {
-    /* vertical */
     height: fit-content;
     margin: auto;
     height: auto;
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 50% 50%;
     background-color: rgba(184, 223, 255,0.3);
 }
+.navBarAnchor {
+    display: block;
+    position: relative;
+    top: -64px;
+    visibility: hidden;
+}
 
-.explain-steps-container p{
+.tutorial-container p{
     padding: 20px;
     text-align: justify;
     font-size: large;
     border-top-width: 1px;
     border-top-style: solid;
     border-top-color: wheat;
-
 }
 
-.explain-steps-container a{
-    max-width: 500px;
-    /* height:200px; */
+.tutorial-container a{
     align-items: center;
     border-top-width: 1px;
     border-top-style: solid;
@@ -45,15 +50,6 @@ button
     min-height: 80px;
     width: 100%;
     }
-.buttons{
-    position:center;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    display: grid;
-    grid-template-columns: 100%;
-}
 
 button:hover {
     background-color: rgb(197, 233, 216);
@@ -85,7 +81,7 @@ ngx-dropzone
     }
     .dzp{
     height: 50%  !important; 
-    min-height: 100px !important;
+    min-height: 40px !important;
     width: 100%  !important;
     max-width: 100% !important;
     }
@@ -95,22 +91,28 @@ ngx-dropzone
     color:white;
 }
 
-/* horizontal */
-@media  (min-width: 500px) {
-    .workplace-container,
-    .explain-steps-container{
-        grid-template-columns: 50% 50%;
+/* vertical if  less than 1000px*/ 
+@media  (max-width: 1000px) {
+    .tutorial-container{
+        grid-template-columns: 100%;
     }
-    .dz{
-        min-height:100% !important;
-    } 
+}
+/* vertical if  less than 800px*/ 
+@media  (max-width: 800px) {
+    .workplace-container {
+        grid-template-columns: 100%;
+    }
     .dzp{
-        min-height: 160px !important;
+        margin: 0 auto;
+        min-height: 130px !important;
         }
-    .buttons{ 
-        grid-column-start: 2;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 1;
-        }
+    .dz{
+        /* max-height:100px !important; */
+        /* min-height:100% !important; */
+    }
+}
+/* vertical less than 499 */
+@media  (max-width: 499px) {
+    img {width: 100%;
+    }
 }
