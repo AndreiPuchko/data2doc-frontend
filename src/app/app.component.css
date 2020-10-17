@@ -8,13 +8,14 @@
     }
 
    
-    .workplace-container, .tutorial-container
+.workplace-container, .tutorial-container, .gallery-container
 {
     height: fit-content;
     margin: auto;
     height: auto;
     display: grid;
     grid-template-columns: 50% 50%;
+    grid-row-gap: 10px;
     background-color: rgba(184, 223, 255,0.3);
 }
 .navBarAnchor {
@@ -24,20 +25,24 @@
     visibility: hidden;
 }
 
-.tutorial-container p{
+
+.tutorial-container p, .gallery-container p{
     padding: 20px;
     text-align: justify;
     font-size: large;
     border-top-width: 1px;
     border-top-style: solid;
-    border-top-color: wheat;
+    border-top-color: rgb(136, 251, 255);
 }
 
-.tutorial-container a{
+.tutorial-container a, .gallery-container a{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
     align-items: center;
     border-top-width: 1px;
     border-top-style: solid;
-    border-top-color: wheat;
+    border-top-color: rgb(136, 251, 255);
 }
 
 button 
@@ -79,12 +84,12 @@ ngx-dropzone
     .dzl{
         z-index: 0;
     }
-    .dzp{
+.dzp{
     height: 50%  !important; 
-    min-height: 40px !important;
+    min-height: 140px !important;
     width: 100%  !important;
     max-width: 100% !important;
-    }
+}
 .stat-footer{
     padding: 10px;
     background-color: #3f51b5;
@@ -93,12 +98,20 @@ ngx-dropzone
 
 /* vertical if  less than 1000px*/ 
 @media  (max-width: 1000px) {
-    .tutorial-container{
+    .tutorial-container, .gallery-container{
         grid-template-columns: 100%;
     }
+    .tutorial-container a, .gallery-container a{
+        border: hidden;
+    }
+    .tutorial-container p, .gallery-container p{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    
 }
 /* vertical if  less than 800px*/ 
-@media  (max-width: 800px) {
+@media  (max-width: 700px) {
     .workplace-container {
         grid-template-columns: 100%;
     }
@@ -115,4 +128,15 @@ ngx-dropzone
 @media  (max-width: 499px) {
     img {width: 100%;
     }
+}
+
+.placeHeader {
+    padding-top: 10px;
+}
+
+.price{
+    width: 25%;
+    height: 100px;
+    background-color: rgb(127, 238, 238);
+    margin: 0 auto;
 }
