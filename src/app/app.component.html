@@ -40,83 +40,98 @@
     <h2 class="placeHeader">Step-by-step guide.</h2>
     <a class="navBarAnchor" id="Tutorial"></a>
     <div class="tutorial-container">
-      <p><b>1. </b>Prepare the table data in an Excel spreadsheet.
-        You can place data in different sheets.
-        You can name the columns for convenience,
-        but you don't have to.
-      </p>
-      <a><img src="../assets/step01.png" alt="step01 picture"></a>
-      <p><b>2. </b>Prepare a template Word document.
-        Place sheet name surrounded by a # character
-        at the begining and end of the pieces you
-        want to fill with data from Excel.<br>
-        Place columns letters surrounded by #
-        character in their places
-        in the marked section.<br>
-        A template can have as many fragments as you need.<br>
-        That is enough if you
-        are using columns letters and want to process all rows
-        of the sheet. Go to the step <b>6</b>.
-      </p>
-      <a><img src="../assets/step02.png" alt="step01 picture"></a>
-
-      <p><b>3. </b>Put columns names into any
-        row of your sheet to use names
-        instead of columns letters in the template.
-      </p>
-      <a><img src="../assets/step03.png" alt="step03 picture"></a>
-
-      <p><b>4. </b>If you have specified columns names,
-        put the row number
-        containing the names after colon in
-        the start label of the fragment. This will process all
-        rows of the sheet but not row 1.
-      </p>
-      <a><img src="../assets/step04.png" alt="step04 picture"></a>
-
-      <p><b>5. </b>
-        To select rows range for processing, place the
-        start and end row numbers in the start label
-        after the names row number, using colon as separator.
-        Omit colon and end row number for processing rows to the end.
-        If you are using columns letters instead of the names
-        put 0 as the row number of names.
-      </p>
-      <a><img src="../assets/step05.png" alt="step04 picture"></a>
-    </div>
-    <div class="tutorial-container" style="grid-template-columns: 100%">
-      <p><b>6. </b>That is it. Upload two files to the
-        workspace on this page,
-        press the
-        <button mat-raised-button class="button_single_on_row" (click)="data2doc()" style="min-width: 0px;
+      <div class="tutorial-item">
+        <p><b>1. </b>Prepare the table data in an Excel spreadsheet.
+          You can place data in different sheets.
+          You can name the columns for convenience,
+          but you don't have to.
+        </p>
+        <a><img src="../assets/step01.png" alt="step01 picture"></a>
+      </div>
+      <div class="tutorial-item">
+        <p><b>2. </b>Prepare a template Word document.
+          Place sheet name surrounded by a # character
+          at the begining and end of the pieces you
+          want to fill with data from Excel.<br>
+          Place columns letters surrounded by #
+          character in their places
+          in the marked section.<br>
+          A template can have as many fragments as you need.<br>
+          That is enough if you
+          are using columns letters and want to process all rows
+          of the sheet. Go to the step <b>6</b>.
+        </p>
+        <a><img src="../assets/step02.png" alt="step01 picture"></a>
+      </div>
+      <div class="tutorial-item">
+        <p><b>3. </b>Put columns names into any
+          row of your sheet to use names
+          instead of columns letters in the template.
+        </p>
+        <a><img src="../assets/step03.png" alt="step03 picture"></a>
+      </div>
+      <div class="tutorial-item">
+        <p><b>4. </b>If you have specified columns names,
+          put the row number
+          containing the names after colon in
+          the start label of the fragment. This will process all
+          rows of the sheet but not row 1.
+        </p>
+        <a><img src="../assets/step04.png" alt="step04 picture"></a>
+      </div>
+      <div class="tutorial-item">
+        <p><b>5. </b>
+          To select a range of rows for processing, place the
+          start and end row numbers in the start label
+          after the names row number, using colon as separator.
+          Omit colon and end row number for processing rows to the end.
+          If you are using columns letters instead of the names
+          put 0 as the row number of names.
+        </p>
+        <a><img src="../assets/step05.png" alt="step04 picture"></a>
+      </div>
+      <!-- </div>
+    <div class="tutorial-container" style="grid-template-columns: 100%"> -->
+      <div class="tutorial-item" style="grid-template-columns: 100%">
+        <p><b>6. </b>That is it. Upload two files to the
+          workspace on this page,
+          press the
+          <button mat-raised-button class="button_single_on_row" (click)="data2doc()" style="min-width: 0px;
             min-height: 0px; width:auto;">
-          Convert data 2 doc</button> button in the workspace or here,
-        enjoy the result.docx file.
-      </p>
+            Convert data 2 doc</button> button in the workspace or here,
+          enjoy the result.docx file.
+        </p>
+      </div>
     </div>
     <h2 class="placeHeader">Gallery</h2>
     <a class="navBarAnchor" id="Gallery"></a>
     <div class="gallery-container">
-      <p><b>Resume.</b> Prepare content in the spreadsheet, use 
-        templates to render it in many styles.
-      </p>
-      <a></a>
-      <p><b>Invitation.</b> Prepare list of guests in the spreadsheet, use 
-        templates to render it in many styles.
-      </p>
-      <a></a>
-      <p><b>Menu.</b> Prepare list of dishes in the spreadsheet, use 
-        templates to render it in many styles.
-      </p>
-      <a></a>
-
+      <div class="tutorial-item">
+        <p><b>Resume.</b> Prepare content in the spreadsheet, use
+          templates to render it in many styles.
+        </p>
+        <a></a>
+      </div>
+      <div class="tutorial-item">
+        <p><b>Invitation.</b> Prepare list of guests in the spreadsheet, use
+          templates to render it in many styles.
+        </p>
+        <a></a>
+      </div>
+      <div class="tutorial-item">
+        <p><b>Menu.</b> Prepare list of dishes in the spreadsheet, use
+          templates to render it in many styles.
+        </p>
+        <a></a>
+      </div>
     </div>
     <h2 class="placeHeader">Pricing</h2>
-    <div class="pricing" fxLayout="row" fxLayoutAlign="space-around center" id="Pricing">
+    <div class="pricing" id="Pricing">
       <div class="price" fxLayout="row" fxLayoutAlign="space-around center">free</div>
-      <div class="price" fxLayout="row" fxLayoutAlign="space-around center">standart</div>
+      <div class="price" fxLayout="row" fxLayoutAlign="space-around center">standard</div>
       <div class="price" fxLayout="row" fxLayoutAlign="space-around center">team</div>
     </div>
   </div>
 </body>
+
 </html>

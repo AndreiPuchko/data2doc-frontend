@@ -7,7 +7,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  pos = "start";
+  pos = "end";
   constructor(private apiService: ApiService,
   ) { }
 

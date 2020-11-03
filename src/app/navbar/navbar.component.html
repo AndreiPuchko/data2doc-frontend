@@ -4,16 +4,15 @@
   <a mat-button href="#Gallery">Gallery</a>
   <a mat-button href="#Pricing">Pricing</a>
   <a mat-button (click)='navBarCommand("C")'>Contact us</a>
-  <a mat-button (click)='navBarCommand("L")'>Login/Register</a>
+  <a mat-button (click)='navBarCommand("L")'>Login</a>
+  <a mat-button (click)='navBarCommand("S")'>Sign up</a>
 </ng-template>
 
 <ng-template #menuButton>
   <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-    data2doc
   </button>
 </ng-template>
-
 <mat-sidenav-container class="sidenav-container">
   <!-- vertical popup bar -->
   <mat-sidenav #drawer class="sidenav" fixedInViewport position="{{pos}}">
@@ -30,9 +29,15 @@
   <!-- Horizontal bar -->
   <mat-sidenav-content fxStyle="center center">
     <mat-toolbar color="primary">
-      <ng-container [ngTemplateOutlet]="menuButton"></ng-container>
-      <div id="hMenu" fxFlex fxLayout="row" fxLayoutAlign="end">
-        <ng-container [ngTemplateOutlet]="menuItems"></ng-container>
+      <mat-icon>transform</mat-icon>
+      data2doc
+      <div fxFlex fxLayoutAlign="end">
+        <div id="hMenu" fxFlex fxLayout="row" fxLayoutAlign="end">
+          <ng-container [ngTemplateOutlet]="menuItems"></ng-container>
+        </div>
+        <div id="menuButton0">
+          <ng-container [ngTemplateOutlet]="menuButton"></ng-container>
+        </div>
       </div>
     </mat-toolbar>
   </mat-sidenav-content>

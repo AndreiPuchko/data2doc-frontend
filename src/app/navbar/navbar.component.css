@@ -10,24 +10,22 @@
   background: inherit;
 }
 
+.mat-toolbar-single-row {
+flex-direction: row-reverse;
+}
+
 .mat-toolbar.mat-primary {
   position: fixed;
-  /* margin: 0 auto; */
   top: 0;
   max-width: 1000px;
   z-index: 1000;
 }
 
-
-
-/* vertical less than 750 */
+/* vertical less than */
 @media  (max-width: 700px) {
-  #hMenu {visibility: hidden;}
-  #rightMenu {visibility:visible;}
-}
-/* @media  (min-width: 701px) {
-  #hMenu {visibility: visible;}
-  #rightMenu {visibility:hidden;}
-} */
+  #hMenu {visibility: hidden;width:0;}
+  }
 
-#rightMenu {visibility:hidden;}
+@media  (min-width: 701px) {
+  #menuButton0 {visibility:hidden; width:0;}
+}

@@ -7,17 +7,38 @@
     width:100%;
     }
 
+.workplace-container{
+    height: fit-content;
+    margin: auto;
+    height: auto;
+    display: grid;
+    padding-bottom: 10px;
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 20px;
+    background-color: rgba(184, 223, 255,0.3);
+    
+}
    
-.workplace-container, .tutorial-container, .gallery-container
+.tutorial-container, .gallery-container
 {
     height: fit-content;
     margin: auto;
     height: auto;
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-row-gap: 10px;
-    background-color: rgba(184, 223, 255,0.3);
+    padding-bottom: 10px;
+    grid-row-gap: 20px;
 }
+
+.tutorial-item {
+    background-color: rgba(184, 223, 255,0.3);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(84, 190, 120);
+    display: grid;
+    grid-template-columns: 45% 55%;
+    padding: 10px;
+}
+
 .navBarAnchor {
     display: block;
     position: relative;
@@ -26,23 +47,19 @@
 }
 
 
-.tutorial-container p, .gallery-container p{
+.tutorial-item p, .gallery-container p{
     padding: 20px;
     text-align: justify;
     font-size: large;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: rgb(136, 251, 255);
 }
 
-.tutorial-container a, .gallery-container a{
+.tutorial-item a, .gallery-container a{
     padding-top: 20px;
     padding-bottom: 20px;
-
     align-items: center;
-    border-top-width: 1px;
+    /* border-top-width: 1px;
     border-top-style: solid;
-    border-top-color: rgb(136, 251, 255);
+    border-top-color: rgb(136, 251, 255); */
 }
 
 button 
@@ -74,7 +91,7 @@ ngx-dropzone
         border-radius: 5px; 
         display: flex; 
         height: 100%; 
-        min-height: 90px !important;
+        min-height: 320px !important;
         font-size: 12pt;
         justify-content: center; 
         margin: 0; 
@@ -86,7 +103,7 @@ ngx-dropzone
     }
 .dzp{
     height: 50%  !important; 
-    min-height: 140px !important;
+    min-height: 125px !important;
     width: 100%  !important;
     max-width: 100% !important;
 }
@@ -96,36 +113,42 @@ ngx-dropzone
     color:white;
 }
 
-/* vertical if  less than 1000px*/ 
+/* vertical if  less than */ 
 @media  (max-width: 1000px) {
-    .tutorial-container, .gallery-container{
+    .tutorial-item, .gallery-container{
         grid-template-columns: 100%;
     }
-    .tutorial-container a, .gallery-container a{
+    .tutorial-item a, .gallery-container a{
         border: hidden;
     }
-    .tutorial-container p, .gallery-container p{
+    .tutorial-item p, .gallery-container p{
+        padding-bottom: 0px;
         padding-left: 10%;
         padding-right: 10%;
     }
     
 }
-/* vertical if  less than 800px*/ 
+/* vertical if  less than 700px*/ 
 @media  (max-width: 700px) {
     .workplace-container {
         grid-template-columns: 100%;
     }
+    ngx-dropzone {
+        min-height: 90px !important;
+    }
     .dzp{
         margin: 0 auto;
-        min-height: 130px !important;
+        min-height: 50px !important;
         }
-    .dz{
-        /* max-height:100px !important; */
-        /* min-height:100% !important; */
+    .tutorial-item p, .gallery-container p{
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
+    
 }
-/* vertical less than 499 */
-@media  (max-width: 499px) {
+/* vertical less than ... */
+@media  (max-width: 530px) {
     img {width: 100%;
     }
 }
@@ -134,9 +157,33 @@ ngx-dropzone
     padding-top: 10px;
 }
 
+.pricing{
+    padding: 50px;
+    background-color: rgba(184, 223, 255,0.3);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(84, 190, 120);
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+
+/* vertical less than ... */
+@media  (max-width: 600px) {
+    .pricing {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: 20px;
+    }
+}
+
+
 .price{
-    width: 25%;
+    width: 90%;
     height: 100px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: x-large;
+    border-color: rgb(84, 190, 120);
     background-color: rgb(127, 238, 238);
     margin: 0 auto;
 }

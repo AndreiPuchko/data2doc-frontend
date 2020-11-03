@@ -52,6 +52,7 @@ export class AppComponent {
       for (let i = 0; i < this.filesDz.length; i++) {
         fd.append('file', this.filesDz[i], this.filesDz[i].name);
       }
+      // console.log(fd);
       this.apiService.sendFiles(fd).subscribe(
         data => {
           console.log('files sent successfully');
@@ -93,8 +94,8 @@ export class AppComponent {
   }
 
   dropFile(file_object: File) {
-    var fileType;
-    fileType = file_object.name.slice(-4).toLowerCase();
+    // var fileType:string;
+    let fileType = file_object.name.slice(-4).toLowerCase();
     for (let i = 0; i < this.filesDz.length; i++) {
       if (fileType === this.filesDz[i].name.slice(-4).toLowerCase())
         this.filesDz.splice(i, 1);
