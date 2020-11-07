@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig,MatDialogRef } from '@angular/material/dialo
 
 import { PopupmessageComponent } from './popupmessage/popupmessage.component';
 import { WaitComponent } from './wait/wait.component';
+// import { LogindialogComponent } from './logindialog/logindialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,24 @@ export class ApiService {
     };
     const dialogRef = this.dialog.open(PopupmessageComponent, dialogConfig);
   }
+
+  // public zzLogin(text: string, titleText: string = "Message", okButtonText: string = "Ok") {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.autoFocus = true;
+  //   dialogConfig.data = {
+  //     'messageText': text,
+  //     'titleText': titleText,
+  //     'email': "info@data2doc.net",
+  //     'okButtonText': okButtonText
+  //   };
+  //   const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
+  // }
+
+  public sendEmailForLogin(email:string){
+    alert(email+"---");
+  }
+
 
   public zzWaitShow(text: string = "Processing", titleText: string = "Wait",
     okButtonText: string = "Ok") {

@@ -1,0 +1,20 @@
+<form #form="ngForm">
+    <h1 mat-dialog-title>Login dialog</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input matInput #emailMess="ngModel" placeholder="Enter your eMail here" ngModel [(ngModel)]="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" email required>
+        </mat-form-field>
+    </div>
+    <br>
+    <p>
+        You will stay logged in <br>
+        on this device and this browser <br>
+        until you hit logout button.<br>
+    </p>
+    <div mat-dialog-actions>
+        <button mat-raised-button [disabled]="form.invalid" (click)="loginMe()" color="primary">Send me login
+            link</button>
+        <button mat-raised-button (click)="closeMe()" color="primary">Cancel</button>
+    </div>
+</form>

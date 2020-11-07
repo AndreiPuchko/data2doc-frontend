@@ -12,6 +12,7 @@ import { MaterialModule } from './material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WaitComponent } from './wait/wait.component';
 import { PopupmessageComponent } from './popupmessage/popupmessage.component';
+import { LogindialogComponent } from './logindialog/logindialog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PopupmessageComponent } from './popupmessage/popupmessage.component';
     WaitComponent,
     NavbarComponent,
     PopupmessageComponent,
+    LogindialogComponent,
   ],
   imports: [
     BrowserModule,
