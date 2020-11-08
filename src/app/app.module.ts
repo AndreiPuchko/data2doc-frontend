@@ -13,7 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WaitComponent } from './wait/wait.component';
 import { PopupmessageComponent } from './popupmessage/popupmessage.component';
 import { LogindialogComponent } from './logindialog/logindialog.component';
-
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +31,8 @@ import { LogindialogComponent } from './logindialog/logindialog.component';
     FlexLayoutModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [CookieService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

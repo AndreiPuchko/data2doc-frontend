@@ -6,6 +6,7 @@ interface DialogData {
   messageText: string;
   titleText: string;
   email: string;
+  navBarComponent: any;
   okButtonText: string;
 }
 
@@ -26,10 +27,23 @@ export class LogindialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  private sendEmailDone(data) {
+    if (!data['status'].startsWith("Error")) {
+      this.apiService.setCookie("d2dtoken", data['key']);
+      this.apiService.setCookie("d2dEmail", this.email);
+      this.dialogRef.close();
+      this.data['navBarComponent'].checkLoginEvent.emit();
+      this.apiService.zzMess(data['status'], "Sucsess");
+    }
+    else {
+      this.apiService.zzMess("Wrong Email, it was not sent! Check it and try again", "Attention");
+    }
+
+  }
   public loginMe() {
-    // alert(this.email);
-    this.apiService.sendEmailForLogin(this.email);
-    // this.dialogRef.close();
+    this.apiService.sendEmailForLogin(this.email).
+      subscribe(data => this.sendEmailDone(data));
+
   }
 
   ngOnInit(): void {

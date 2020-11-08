@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import { CookieService } from 'ngx-cookie-service';
+
 import { environment } from '../environments/environment';
-import { MatDialog, MatDialogConfig,MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 
 import { PopupmessageComponent } from './popupmessage/popupmessage.component';
 import { WaitComponent } from './wait/wait.component';
-// import { LogindialogComponent } from './logindialog/logindialog.component';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +17,18 @@ export class ApiService {
   apiURL: string = environment.baseUrl;
   file_data: any;
   waitWindow: MatDialogRef<WaitComponent>;
-  
+
   constructor(private http: HttpClient,
+    private cookieService: CookieService,
     public dialog: MatDialog) { }
+
+  public getCookie(name: string) {
+    return this.cookieService.get(name);
+  }
+
+  public setCookie(name: string, value: string) {
+    return this.cookieService.set(name, value);
+  }
 
   public downloadResultFile(key: string): any {
     return this.http.get(this.apiURL + "result/" + key, { responseType: 'blob' });
@@ -34,6 +46,10 @@ export class ApiService {
     return this.http.get(this.apiURL + "rowcount", {});
   }
 
+  public checkLogin(token:string) {
+    return this.http.get(this.apiURL + "checklogin/"+token, {});
+  }
+
   public zzMess(text: string, titleText: string = "Message", okButtonText: string = "Ok") {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -46,21 +62,10 @@ export class ApiService {
     const dialogRef = this.dialog.open(PopupmessageComponent, dialogConfig);
   }
 
-  // public zzLogin(text: string, titleText: string = "Message", okButtonText: string = "Ok") {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = true;
-  //   dialogConfig.data = {
-  //     'messageText': text,
-  //     'titleText': titleText,
-  //     'email': "info@data2doc.net",
-  //     'okButtonText': okButtonText
-  //   };
-  //   const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
-  // }
-
-  public sendEmailForLogin(email:string){
-    alert(email+"---");
+  public sendEmailForLogin(email: string) {
+    let fd: FormData = new FormData();
+    fd.append("email", email)
+    return this.http.post(this.apiURL + "sendloginmail", fd);
   }
 
 
@@ -75,11 +80,11 @@ export class ApiService {
       'okButtonText': okButtonText
     };
     const dialogRef = this.dialog.open(WaitComponent, dialogConfig);
-    this.waitWindow=dialogRef;
+    this.waitWindow = dialogRef;
   }
 
   public zzWaitClose() {
-    if (this.waitWindow){
+    if (this.waitWindow) {
       this.waitWindow.close()
     }
   }

@@ -4,7 +4,12 @@
   <a mat-button href="#Gallery">Gallery</a>
   <a mat-button href="#Pricing">Pricing</a>
   <a mat-button (click)='navBarCommand("C")'>Contact us</a>
-  <a mat-button (click)='navBarCommand("L")'>Login</a>
+  <div *ngIf="!loggedIn">
+    <a mat-button (click)='navBarCommand("L")'>Login</a>
+  </div>
+  <div *ngIf="loggedIn">
+    <a mat-button (click)='navBarCommand("O")'>Logout</a>
+  </div>
   <!-- <a mat-button (click)='navBarCommand("S")'>Sign up</a> -->
 </ng-template>
 

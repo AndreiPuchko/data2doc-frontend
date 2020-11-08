@@ -11,13 +11,28 @@ export class AppComponent {
   title = 'data2doc.net';
   rowCount = 0;
   filesDz: File[] = [];
+  loggedIn: boolean;
 
   constructor(private apiService: ApiService,
   ) { }
 
   ngOnInit() {
+    this.checkLogin();
     this.downloadExampleFiles();
     this.getProcessedFilesCounter();
+  }
+
+  checkLogin() {
+    let token = this.apiService.getCookie("d2dtoken");
+    if (token == "") {
+      this.loggedIn = false;
+    }
+    else {
+      this.apiService.checkLogin(token).
+        subscribe(data => {
+          this.loggedIn = (data['status'] == "logged");
+        })
+    }
   }
 
   getProcessedFilesCounter() {
