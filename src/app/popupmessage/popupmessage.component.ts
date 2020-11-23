@@ -12,6 +12,7 @@ interface DialogData {
   templateUrl: './popupmessage.component.html',
   styleUrls: ['./popupmessage.component.css']
 })
+
 export class PopupmessageComponent implements OnInit {
 
   constructor(

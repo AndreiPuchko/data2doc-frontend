@@ -30,7 +30,13 @@ export class AppComponent {
     else {
       this.apiService.checkLogin(token).
         subscribe(data => {
-          this.loggedIn = (data['status'] == "logged");
+          this.loggedIn = false;
+          if (data['status'] == "logged") {
+            this.loggedIn = true;
+          }
+          else if (data['status'] == "bad token") {
+            this.apiService.setCookie("d2dtoken", "")
+          }
         })
     }
   }

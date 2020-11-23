@@ -43,11 +43,9 @@ export class LogindialogComponent implements OnInit {
   public loginMe() {
     this.apiService.sendEmailForLogin(this.email).
       subscribe(data => this.sendEmailDone(data));
-
   }
 
   ngOnInit(): void {
     this.email = this.data.email;
   }
-
 }

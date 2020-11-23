@@ -36,8 +36,14 @@ export class NavbarComponent {
     }
     else if (command == "O") {
       //logout
-      this.apiService.setCookie("d2dtoken", "");
-      this.checkLoginEvent.emit();
+      let token = this.apiService.getCookie("d2dtoken");
+      this.apiService.logout(token).subscribe(data => {
+        if (data['status'] === "You are logged out from data2doc.net") {
+          this.apiService.setCookie("d2dtoken", "");
+          this.checkLoginEvent.emit();
+        }
+      }
+      )
     }
     else {
       // this.apiService.zzLogin("Command is:" + command, "Command button clicked", "Go on");

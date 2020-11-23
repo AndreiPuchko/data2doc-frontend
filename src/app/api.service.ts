@@ -27,7 +27,9 @@ export class ApiService {
   }
 
   public setCookie(name: string, value: string) {
-    return this.cookieService.set(name, value);
+    let expiredDate = new Date();
+    expiredDate.setDate(expiredDate.getDate() + 36500);
+    return this.cookieService.set(name, value, expiredDate);
   }
 
   public downloadResultFile(key: string): any {
@@ -46,8 +48,12 @@ export class ApiService {
     return this.http.get(this.apiURL + "rowcount", {});
   }
 
-  public checkLogin(token:string) {
-    return this.http.get(this.apiURL + "checklogin/"+token, {});
+  public checkLogin(token: string) {
+    return this.http.get(this.apiURL + "checklogin/" + token, {});
+  }
+
+  public logout(token: string) {
+    return this.http.get(this.apiURL + "logout/" + token, {});
   }
 
   public zzMess(text: string, titleText: string = "Message", okButtonText: string = "Ok") {

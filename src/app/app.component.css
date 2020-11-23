@@ -16,9 +16,15 @@
     grid-template-columns: 50% 50%;
     grid-row-gap: 20px;
     background-color: rgba(184, 223, 255,0.3);
-    
 }
-   
+
+.navBarAnchor {
+    display: block;
+    position: relative;
+    top: -64px;
+    visibility: hidden;
+}
+
 .tutorial-container, .gallery-container
 {
     height: fit-content;
@@ -38,14 +44,6 @@
     grid-template-columns: 45% 55%;
     padding: 10px;
 }
-
-.navBarAnchor {
-    display: block;
-    position: relative;
-    top: -64px;
-    visibility: hidden;
-}
-
 
 .tutorial-item p, .gallery-container p{
     padding: 20px;
@@ -107,10 +105,17 @@ ngx-dropzone
     width: 100%  !important;
     max-width: 100% !important;
 }
-.stat-footer{
+.stat-footer {
     padding: 10px;
     background-color: #3f51b5;
     color:white;
+}
+
+.page-footer {
+    height: 100px;
+    background-color: #3f51b5;
+    color:white;
+    margin: auto;
 }
 
 /* vertical if  less than */ 
@@ -145,7 +150,6 @@ ngx-dropzone
         padding-left: 0px;
         padding-right: 0px;
     }
-    
 }
 /* vertical less than ... */
 @media  (max-width: 530px) {
@@ -186,4 +190,8 @@ ngx-dropzone
     border-color: rgb(84, 190, 120);
     background-color: rgb(127, 238, 238);
     margin: 0 auto;
+}
+
+#workit_button {
+    background: rgb(255, 243, 78);
 }

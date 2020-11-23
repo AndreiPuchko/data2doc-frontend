@@ -1,0 +1,61 @@
+.tutorial-container, .gallery-container
+{
+    height: fit-content;
+    margin: auto;
+    height: auto;
+    display: grid;
+    padding-bottom: 10px;
+    grid-row-gap: 20px;
+}
+
+.tutorial-item {
+    background-color: rgba(184, 223, 255,0.3);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(84, 190, 120);
+    display: grid;
+    grid-template-columns: 45% 55%;
+    padding: 10px;
+}
+
+.tutorial-item p, .gallery-container p{
+    padding: 20px;
+    text-align: justify;
+    font-size: large;
+}
+
+.tutorial-item a, .gallery-container a{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+/* vertical if  less than */ 
+@media  (max-width: 1000px) {
+    .tutorial-item, .gallery-container{
+        grid-template-columns: 100%;
+    }
+    .tutorial-item a, .gallery-container a{
+        border: hidden;
+    }
+    .tutorial-item p, .gallery-container p{
+        padding-bottom: 0px;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+/* vertical if  less than 700px*/ 
+@media  (max-width: 700px) {
+    .tutorial-item p, .gallery-container p{
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+/* vertical less than ... */
+@media  (max-width: 530px) {
+    img {width: 100%;
+    }
+}
