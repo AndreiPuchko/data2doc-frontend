@@ -26,7 +26,13 @@ export class NavbarComponent {
       'email': this.apiService.getCookie("d2dEmail"),
       'navBarComponent': this,
     };
-    const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
+    if (this.apiService.getCookie("d2dtoken") == "") {
+      const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
+    }
+    else {
+      // const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
+      this.checkLoginEvent.emit();
+    }
   }
 
 

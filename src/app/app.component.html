@@ -17,7 +17,7 @@
       <div class="files">
         <ngx-dropzone class="dz" (change)="onSelectDz($event)" [disabled]="false" [multiple]="true" [expandable]="true">
           <ngx-dropzone-preview class="dzp" *ngFor="let f of filesDz" [removable]="true" (removed)="onRemoveDz(f)">
-            <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}}B)</ngx-dropzone-label>
+            <ngx-dropzone-label class="dzl"> {{f.name}}(size {{f.size}} Bytes)</ngx-dropzone-label>
           </ngx-dropzone-preview>
           <div style="font-size: 10pt;">Drop both DOCX and XLSX files to this area or click to select</div>
         </ngx-dropzone>

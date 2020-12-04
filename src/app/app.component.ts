@@ -67,26 +67,50 @@ export class AppComponent {
   }
 
   data2doc() {
+    const d2dtoken = this.apiService.getCookie("d2dtoken")
+    const maxSize = 20480;
+    const maxRowsCount = 50;
+    let filesSize = 0;
     if (this.filesDz.length === 2) {
-      this.apiService.zzWaitShow();
       let fd: FormData = new FormData();
       for (let i = 0; i < this.filesDz.length; i++) {
         fd.append('file', this.filesDz[i], this.filesDz[i].name);
+        filesSize += this.filesDz[i].size;
       }
-      // console.log(fd);
-      this.apiService.sendFiles(fd).subscribe(
-        data => {
-          console.log('files sent successfully');
-          this.downloadResult(data['key']);
-        },
-        error => {
-          console.log('failed files download');
-          this.apiService.waitWindow.close();
-        },
-        () => {
-          //
-        }
-      );
+      if (d2dtoken != "" || filesSize <= maxSize) {
+        this.apiService.zzWaitShow();
+        this.apiService.sendFiles(fd, d2dtoken).subscribe(
+          data => {
+            if (data['text'] == "files sent successfully") {
+              if (d2dtoken != "" || parseInt(data['dataRowsCount']) <= maxRowsCount) {
+                this.downloadResult(data['key']);//getting result
+              }
+              else {
+                this.apiService.zzMess("Total data rows limit exeeded! No more than " +
+                  maxRowsCount.toString() + " rows without registration." +
+                  "Please, login please to get full service");
+              }
+            }
+            else {
+              this.apiService.zzMess("Something went wrong")
+            }
+          },
+          error => {
+            console.log('files upload failed');
+            // this.apiService.waitWindow.close();
+            this.apiService.zzWaitClose();
+          },
+          () => {
+            //
+          }
+        );
+      }
+      else {
+        this.apiService.zzMess("Files size exeeded! No more than " +
+          maxSize.toString() + " bytes without registration." +
+          "Please, login to get full service");
+      }
+      console.log(filesSize);
     }
     else {
       this.apiService.zzMess("I need 2 files", "Not enough data!", "Go on");
@@ -118,7 +142,11 @@ export class AppComponent {
     // var fileType:string;
     let fileType = file_object.name.slice(-4).toLowerCase();
     for (let i = 0; i < this.filesDz.length; i++) {
-      if (fileType === this.filesDz[i].name.slice(-4).toLowerCase())
+      let existFileType = this.filesDz[i].name.slice(-4).toLowerCase()
+      if (fileType === existFileType ||
+        (fileType === "json" && existFileType === "xlsx") ||
+        (fileType === "xlsx" && existFileType === "json")
+      )
         this.filesDz.splice(i, 1);
     }
     this.filesDz.push(file_object)

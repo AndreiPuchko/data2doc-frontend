@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -40,8 +41,14 @@ export class ApiService {
     return this.http.get(this.apiURL + "examplefile/" + filetype, { responseType: 'blob' });
   }
 
-  public sendFiles(fd) {
-    return this.http.post<any>(this.apiURL + "data2doc", fd);
+  public sendFiles(fd, d2dtoken) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "d2dtoken": d2dtoken
+      })
+    };
+
+    return this.http.post<any>(this.apiURL + "data2doc", fd,httpOptions);
   }
 
   public getRowCount() {
@@ -65,6 +72,7 @@ export class ApiService {
       'titleText': titleText,
       'okButtonText': okButtonText
     };
+    this.zzWaitClose();
     const dialogRef = this.dialog.open(PopupmessageComponent, dialogConfig);
   }
 
