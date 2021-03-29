@@ -20,8 +20,31 @@ export class AppComponent {
     this.checkLogin();
     this.downloadExampleFiles();
     this.getProcessedFilesCounter();
+    // this.cookieConsent();
   }
 
+  cookieConsent (){
+    let cc = window as any;
+    cc.cookieconsent.initialise({
+      palette: {
+        popup: {
+          background: "#164969"
+        },
+        button: {
+          background: "#ffe000",
+          text: "#164969"
+        }
+      },
+      theme: "classic",
+      content: {
+        message: "This website uses cookies to store personal data (only your email address) for your automatic login. ",
+        dismiss: "Everything is clear, I agree ",
+        link: "What are cookies?",
+        // href: environment.Frontend + "/dataprivacy" 
+      }
+    });
+
+  }
   checkLogin() {
     let token = this.apiService.getCookie("d2dtoken");
     if (token == "") {
@@ -34,7 +57,7 @@ export class AppComponent {
           if (data['status'] == "logged") {
             this.loggedIn = true;
           }
-          else if (data['status'] == "bad token") {
+          else {
             this.apiService.setCookie("d2dtoken", "")
           }
         })
@@ -68,49 +91,29 @@ export class AppComponent {
 
   data2doc() {
     const d2dtoken = this.apiService.getCookie("d2dtoken")
-    const maxSize = 20480;
-    const maxRowsCount = 50;
-    let filesSize = 0;
     if (this.filesDz.length === 2) {
       let fd: FormData = new FormData();
       for (let i = 0; i < this.filesDz.length; i++) {
         fd.append('file', this.filesDz[i], this.filesDz[i].name);
-        filesSize += this.filesDz[i].size;
       }
-      if (d2dtoken != "" || filesSize <= maxSize) {
-        this.apiService.zzWaitShow();
-        this.apiService.sendFiles(fd, d2dtoken).subscribe(
-          data => {
-            if (data['text'] == "files sent successfully") {
-              if (d2dtoken != "" || parseInt(data['dataRowsCount']) <= maxRowsCount) {
-                this.downloadResult(data['key']);//getting result
-              }
-              else {
-                this.apiService.zzMess("Total data rows limit exeeded! No more than " +
-                  maxRowsCount.toString() + " rows without registration." +
-                  "Please, login please to get full service");
-              }
-            }
-            else {
-              this.apiService.zzMess("Something went wrong")
-            }
-          },
-          error => {
-            console.log('files upload failed');
-            // this.apiService.waitWindow.close();
-            this.apiService.zzWaitClose();
-          },
-          () => {
-            //
+      this.apiService.zzWaitShow();
+      this.apiService.sendFiles(fd, d2dtoken).subscribe(
+        data => {
+          if (data['text'] == "files sent successfully") {
+            this.downloadResult(data['url4download']);//getting result
           }
-        );
-      }
-      else {
-        this.apiService.zzMess("Files size exeeded! No more than " +
-          maxSize.toString() + " bytes without registration." +
-          "Please, login to get full service");
-      }
-      console.log(filesSize);
+          else {
+            this.apiService.zzMess(data['text'])
+          }
+        },
+        error => {
+          console.log('files upload failed');
+          this.apiService.zzWaitClose();
+        },
+        () => {
+          //
+        }
+      );
     }
     else {
       this.apiService.zzMess("I need 2 files", "Not enough data!", "Go on");
@@ -139,17 +142,18 @@ export class AppComponent {
   }
 
   dropFile(file_object: File) {
-    // var fileType:string;
     let fileType = file_object.name.slice(-4).toLowerCase();
-    for (let i = 0; i < this.filesDz.length; i++) {
-      let existFileType = this.filesDz[i].name.slice(-4).toLowerCase()
-      if (fileType === existFileType ||
-        (fileType === "json" && existFileType === "xlsx") ||
-        (fileType === "xlsx" && existFileType === "json")
-      )
-        this.filesDz.splice(i, 1);
+    if (['json', 'xlsx', 'docx'].indexOf(fileType) >= 0) {
+      for (let i = 0; i < this.filesDz.length; i++) {
+        let existFileType = this.filesDz[i].name.slice(-4).toLowerCase()
+        if (fileType === existFileType ||
+          (fileType === "json" && existFileType === "xlsx") ||
+          (fileType === "xlsx" && existFileType === "json")
+        )
+          this.filesDz.splice(i, 1);
+      }
+      this.filesDz.push(file_object)
     }
-    this.filesDz.push(file_object)
   }
 
   onSelectDz(event) {

@@ -24,19 +24,20 @@ export class ApiService {
     public dialog: MatDialog) { }
 
   public getCookie(name: string) {
+    return "123"
     return this.cookieService.get(name);
   }
 
   public setCookie(name: string, value: string) {
+    return "123"
     let expiredDate = new Date();
     expiredDate.setDate(expiredDate.getDate() + 36500);
     return this.cookieService.set(name, value, expiredDate);
   }
 
-  public downloadResultFile(key: string): any {
-    return this.http.get(this.apiURL + "result/" + key, { responseType: 'blob' });
+  public downloadResultFile(url: string): any {
+    return this.http.get(url, { responseType: 'blob' });
   }
-
   public downloadExampleFile(filetype: string): any {
     return this.http.get(this.apiURL + "examplefile/" + filetype, { responseType: 'blob' });
   }
@@ -48,7 +49,7 @@ export class ApiService {
       })
     };
 
-    return this.http.post<any>(this.apiURL + "data2doc", fd,httpOptions);
+    return this.http.post<any>(this.apiURL + "data2doc", fd, httpOptions);
   }
 
   public getRowCount() {

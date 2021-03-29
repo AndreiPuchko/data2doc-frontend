@@ -38,7 +38,8 @@ export class NavbarComponent {
 
   navBarCommand(command: string) {
     if (command == "C") {
-      this.apiService.zzMess("Command is:" + command, "Command button clicked", "Go on");
+      this.apiService.zzMess("mailto:  info@data2doc.net","Contact us" ,"Close");
+      // this.apiService.zzMess("mailto: info@data2doc.net","Contact us" ,"Close");
     }
     else if (command == "O") {
       //logout

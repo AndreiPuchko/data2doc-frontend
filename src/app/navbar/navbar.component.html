@@ -4,13 +4,14 @@
   <a mat-button href="#Gallery">Gallery</a>
   <a mat-button href="#Pricing">Pricing</a>
   <a mat-button (click)='navBarCommand("C")'>Contact us</a>
-  <div *ngIf="!loggedIn">
-    <a mat-button (click)='navBarCommand("L")'>Login</a>
-  </div>
-  <div *ngIf="loggedIn">
-    <a mat-button (click)='navBarCommand("O")'>Logout</a>
-  </div>
-  <!-- <a mat-button (click)='navBarCommand("S")'>Sign up</a> -->
+  <!--
+    <div *ngIf="!loggedIn">
+      <a mat-button (click)='navBarCommand("L")'>Login</a>
+    </div>
+    <div *ngIf="loggedIn">
+      <a mat-button (click)='navBarCommand("O")'>Logout</a>
+    </div>
+  -->
 </ng-template>
 
 <ng-template #menuButton>
@@ -34,7 +35,8 @@
   <!-- Horizontal bar -->
   <mat-sidenav-content fxStyle="center center">
     <mat-toolbar color="primary">
-      <mat-icon>transform</mat-icon>
+      <!-- <mat-icon>transform</mat-icon> -->
+      <img src="assets/d2dlogowhite.svg" width="32" height="32">
       data2doc
       <div fxFlex fxLayoutAlign="end">
         <div id="hMenu" fxFlex fxLayout="row" fxLayoutAlign="end">
