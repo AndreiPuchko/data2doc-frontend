@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FlexAlignStyleBuilder } from '@angular/flex-layout';
 import { ApiService } from './api.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class AppComponent {
   rowCount = 0;
   filesDz: File[] = [];
   loggedIn: boolean;
+  jobsToDo=0;
 
   constructor(private apiService: ApiService,
   ) { }
@@ -23,7 +25,7 @@ export class AppComponent {
     // this.cookieConsent();
   }
 
-  cookieConsent (){
+  cookieConsent() {
     let cc = window as any;
     cc.cookieconsent.initialise({
       palette: {
@@ -130,16 +132,46 @@ export class AppComponent {
   dropExampleFileContent(fileContent: string, filetype: string) {
     let file_object = new File([fileContent], 'example.' + filetype, { type: filetype, lastModified: Date.now() });
     this.dropFile(file_object);
+    this.jobsToDo--;
+    if (this.jobsToDo==0)
+    {
+      this.apiService.zzWaitClose();
+    }
+    
   }
 
   getExample(filetype: string) {
-    this.apiService.downloadExampleFile(filetype).subscribe(data => this.dropExampleFileContent(data, filetype), error => console.log("Download example file error!"));
+    this.apiService.downloadExampleFile(filetype).
+      subscribe(data => this.
+        dropExampleFileContent(data, filetype),
+        error => console.log("Download example file error!")
+      );
   }
 
   downloadExampleFiles() {
+    this.apiService.zzWaitShow();
     this.getExample("xlsx");
     this.getExample("docx");
+    this.apiService.zzWaitClose();
   }
+
+
+  downloadGoogleExampleFiles(x:string, d:string) {
+    window.location.href="#Workspace";
+    this.jobsToDo=2;
+    this.apiService.zzWaitShow();
+    this.apiService.downloadGoogleSheetFile(x).
+      subscribe(data => this.
+        dropExampleFileContent(data, "xlsx"),
+        error => console.log("Download example file error!")
+      );
+    this.apiService.downloadGoogleDocFile(d).
+      subscribe(data => this.
+        dropExampleFileContent(data, "docx"),
+        error => console.log("Download example file error!")
+      );
+  }
+
 
   dropFile(file_object: File) {
     let fileType = file_object.name.slice(-4).toLowerCase();

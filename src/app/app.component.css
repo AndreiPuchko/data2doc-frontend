@@ -1,8 +1,11 @@
+body {border-radius: 5px; }
+
 .page-container
     {
     max-width: 1000px;
     margin: auto;
     padding-top: 64px;
+    border-radius: 5px; 
     text-align: center ;
     width:100%;
     }
@@ -13,6 +16,7 @@
     height: auto;
     display: grid;
     padding-bottom: 10px;
+    border-radius: 5px; 
     grid-template-columns: 50% 50%;
     grid-row-gap: 20px;
     background-color: rgba(184, 223, 255,0.3);
@@ -25,7 +29,7 @@
     visibility: hidden;
 }
 
-.tutorial-container, .gallery-container
+.tutorial-container, .cases-container
 {
     height: fit-content;
     margin: auto;
@@ -33,6 +37,7 @@
     display: grid;
     padding-bottom: 10px;
     grid-row-gap: 20px;
+    border-radius: 5px; 
 }
 
 .tutorial-item {
@@ -42,19 +47,22 @@
     border-color: rgb(84, 190, 120);
     display: grid;
     grid-template-columns: 45% 55%;
+    border-radius: 5px; 
     padding: 10px;
 }
 
-.tutorial-item p, .gallery-container p{
+.tutorial-item p, .cases-container p{
     padding: 20px;
     text-align: justify;
     font-size: large;
+    border-radius: 5px; 
 }
 
-.tutorial-item a, .gallery-container a{
+.tutorial-item a, .cases-container a{
     padding-top: 20px;
     padding-bottom: 20px;
     align-items: center;
+    border-radius: 5px; 
     /* border-top-width: 1px;
     border-top-style: solid;
     border-top-color: rgb(136, 251, 255); */
@@ -66,8 +74,11 @@ button
     font-size: 16px;
     padding: 2%;
     margin:2%;
+    border-radius: 5px; 
     min-width: 100px;
     min-height: 80px;
+    max-height: 80px;
+    align-self: flex-end;
     width: 100%;
     }
 
@@ -90,6 +101,7 @@ ngx-dropzone
         display: flex; 
         height: 100%; 
         min-height: 320px !important;
+        border-radius: 5px; 
         font-size: 12pt;
         justify-content: center; 
         margin: 0; 
@@ -108,25 +120,27 @@ ngx-dropzone
 .stat-footer {
     padding: 10px;
     background-color: #3f51b5;
+    border-radius: 5px; 
     color:white;
 }
 
 .page-footer {
     height: 100px;
     background-color: #3f51b5;
+    border-radius: 5px; 
     color:white;
     margin: auto;
 }
 
 /* vertical if  less than */ 
 @media  (max-width: 1000px) {
-    .tutorial-item, .gallery-container{
+    .tutorial-item, .cases-container{
         grid-template-columns: 100%;
     }
-    .tutorial-item a, .gallery-container a{
+    .tutorial-item a, .cases-container a{
         border: hidden;
     }
-    .tutorial-item p, .gallery-container p{
+    .tutorial-item p, .cases-container p{
         padding-bottom: 0px;
         padding-left: 10%;
         padding-right: 10%;
@@ -145,7 +159,7 @@ ngx-dropzone
         margin: 0 auto;
         min-height: 50px !important;
         }
-    .tutorial-item p, .gallery-container p{
+    .tutorial-item p, .cases-container p{
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
@@ -159,6 +173,7 @@ ngx-dropzone
 
 .placeHeader {
     padding-top: 10px;
+    border-radius: 5px; 
 }
 
 .pricing{
@@ -166,6 +181,7 @@ ngx-dropzone
     background-color: rgba(184, 223, 255,0.3);
     border-style: solid;
     border-width: 1px;
+    border-radius: 5px; 
     border-color: rgb(84, 190, 120);
     display: grid;
     grid-template-columns: 33% 34% 33%;
@@ -187,6 +203,7 @@ ngx-dropzone
     border-style: solid;
     border-width: 1px;
     font-size: x-large;
+    border-radius: 5px; 
     border-color: rgb(84, 190, 120);
     background-color: rgb(127, 238, 238);
     margin: 0 auto;

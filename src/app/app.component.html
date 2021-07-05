@@ -41,26 +41,107 @@
     <a class="navBarAnchor" id="Tutorial"></a>
     <app-tutorial></app-tutorial>
 
-    <h2 class="placeHeader">Gallery</h2>
-    <a class="navBarAnchor" id="Gallery"></a>
-    <div class="gallery-container">
+    <h2 class="placeHeader">Cases</h2>
+    <a class="navBarAnchor" id="Cases"></a>
+    <div class="cases-container">
       <div class="tutorial-item">
-        <p><b>Resume.</b> Prepare content in the spreadsheet, use
-          templates to render it in many styles.
+        <p><b>Resume.</b><br>
+          Prepare your data,
+          list your educations, skills,
+          previous jobs, projects, etc in a
+          spreadsheet and apply any template
+          to render it.
         </p>
-        <a></a>
+        <div style="display:flex;">
+          <button mat-raised-button
+            onclick='window.open("https://docs.google.com/spreadsheets/d/1hWRpBoV69E8yAHMNwdJZYCK-lvXCZYU290P2ZhoRX60/edit?usp=sharing")'
+            class="button_single_on_row">Data</button>
+
+          <button mat-raised-button
+            onclick='window.open("https://docs.google.com/document/d/1ddpEsQPJpHr8XPMeLT5YqL862b8c2UJEWCmatWTLA_I")'
+            class="button_single_on_row">Template</button>
+
+          <button mat-raised-button
+            (click)="downloadGoogleExampleFiles('1hWRpBoV69E8yAHMNwdJZYCK-lvXCZYU290P2ZhoRX60','1ddpEsQPJpHr8XPMeLT5YqL862b8c2UJEWCmatWTLA_I')"
+            class="button_single_on_row">Load and try</button>
+        </div>
       </div>
       <div class="tutorial-item">
-        <p><b>Invitation.</b> Prepare list of guests in the spreadsheet, use
-          templates to render it in many styles.
+        <p><b>Cafe menu printing.</b><br>
+          You are an owner of a small cafe, you want
+          to calculate the cost of a dish in a
+          spreadsheet and present it in a menu.
+          For the final look of your menu you are
+          given diverse options. Also you can quickly
+          and easily prepare an additional list e.g.
+          of your special or seasonal dishes and print
+          them in your brand style. Design and options
+          are limited only by your imagination.
         </p>
-        <a></a>
+        <div style="display:flex;">
+          <button mat-raised-button style="align-self: flex-end;"
+            onclick='window.open("https://docs.google.com/spreadsheets/d/1Ui34u4QxYGY2N2WKFP1CiuH1QBecqfK0QgbxY-ZFNfA/edit?usp=sharing")'
+            class="button_single_on_row">Data</button>
+
+          <button mat-raised-button
+            onclick='window.open("https://docs.google.com/document/d/1C3VyLgJPxJCQ_7aqCVa6z3--Yqs8QvZQUt6NMV8EARI")'
+            class="button_single_on_row">Template</button>
+
+          <button mat-raised-button (click)="downloadGoogleExampleFiles('1Ui34u4QxYGY2N2WKFP1CiuH1QBecqfK0QgbxY-ZFNfA',
+                  '1C3VyLgJPxJCQ_7aqCVa6z3--Yqs8QvZQUt6NMV8EARI')" class="button_single_on_row">
+            Load and try</button>
+        </div>
       </div>
       <div class="tutorial-item">
-        <p><b>Menu.</b> Prepare list of dishes in the spreadsheet, use
-          templates to render it in many styles.
+        <p><b>Fetch data from big calculation sheets.</b><br>
+          You are working with big data spreadsheets
+          (modeling, statistics etc).
+          It works well, but your final document
+          must contain only a small part the data sheet.
+          Copy-paste? No. Just define boundaries of
+          the data needed in a template and it is
+          merged in the final document.
         </p>
-        <a></a>
+        <div style="display:flex;">
+          <button mat-raised-button style="align-self: flex-end;"
+            onclick='window.open("https://docs.google.com/spreadsheets/d/15AqFgIZZgHhhplnZotHZqODREeaJv77iD6RXKzrLoZU/edit?usp=sharing")'
+            
+            class="button_single_on_row">Data</button>
+
+          <button mat-raised-button
+            onclick='window.open("https://docs.google.com/document/d/1ly7BRK_A55ox1QAVLR4mubMwHt0vPgI7Dn0maK_X6ac")'
+            class="button_single_on_row">Template</button>
+
+          <button mat-raised-button (click)="downloadGoogleExampleFiles('15AqFgIZZgHhhplnZotHZqODREeaJv77iD6RXKzrLoZU',
+                  '1ly7BRK_A55ox1QAVLR4mubMwHt0vPgI7Dn0maK_X6ac')" class="button_single_on_row">
+            Load and try</button>
+        </div>
+      </div>
+      <div class="tutorial-item">
+        <p><b>Price list creation.</b><br>
+          You are a seller, managing a list of your
+          products and prices (incl. formulae for
+          taxes, discounts etc) in a spreadsheet.
+          For different categories of buyers,
+          it is necessary to form price lists so
+          that the price corresponds to the category.
+          Different compositions and designs of price
+          lists are available.
+        </p>
+        <div style="display:flex;">
+          <button mat-raised-button style="align-self: flex-end;"
+            onclick='window.open("https://docs.google.com/spreadsheets/d/19xpPvbIqVZ2ITveS-DUI3vwSBnSWPXc3qWc1NYtRREs/edit?usp=sharing")'
+            
+            class="button_single_on_row">Data</button>
+
+          <button mat-raised-button
+            onclick='window.open("https://docs.google.com/document/d/13uo49QJ3ouEZL1prgp9h7T1EZz_QX1DJh6hL3Bb7NiM")'
+            class="button_single_on_row">Template</button>
+
+          <button mat-raised-button (click)="downloadGoogleExampleFiles('19xpPvbIqVZ2ITveS-DUI3vwSBnSWPXc3qWc1NYtRREs',
+                  '13uo49QJ3ouEZL1prgp9h7T1EZz_QX1DJh6hL3Bb7NiM')" class="button_single_on_row">
+            Load and try</button>
+        </div>
       </div>
     </div>
     <h2 class="placeHeader">Pricing</h2>

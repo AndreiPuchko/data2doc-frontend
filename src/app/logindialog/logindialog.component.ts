@@ -13,7 +13,8 @@ interface DialogData {
 @Component({
   selector: 'app-logindialog',
   templateUrl: './logindialog.component.html',
-  styleUrls: ['./logindialog.component.css']
+  styleUrls: ['../app.component.css']
+  // styleUrls: ['./logindialog.component.css']
 })
 export class LogindialogComponent implements OnInit {
 

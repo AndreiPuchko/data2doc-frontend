@@ -18,7 +18,7 @@
             A template can have as many fragments as you need.<br>
             That is enough if you
             are using columns letters and want to process all rows
-            of the sheet. Go to the step <b>6</b>.
+            of the sheet. Go to the last step.
         </p>
         <a><img src="../assets/step02.png" alt="step01 picture"></a>
     </div>
@@ -47,18 +47,42 @@
             If you are using columns letters instead of the names
             put 0 as the row number of names.
         </p>
-        <a><img src="../assets/step05.png" alt="step04 picture"></a>
+        <a><img src="../assets/step05.png" alt="step05 picture"></a>
     </div>
-    <!-- </div>
-<div class="tutorial-container" style="grid-template-columns: 100%"> -->
+    <div class="tutorial-item">
+        <p><b>6.</b>
+            To filter data, place after the fourth colon
+            logical expression that can compare row data and return
+            True or False<br>
+            There is some rules to follow:<br>
+            To compare data use: ==, >, >, >=,<=<br>
+            To check if substring in data use: "text" in column_name<br>
+            To convert data to numeric use function: N()<br>
+            Fill free to use parentheses<br>
+            If you not use rows range selection just put nothing 
+            after any colon
+        </p>
+        <a><img src="../assets/step06.png" alt="step06 picture"></a>
+        For example:<br>
+        ...:(N(A)>100 and N(B)<=650) or "sometext" in C <br>
+    </div>
+    <div class="tutorial-item">
+        <p><b>7. </b>
+            To render fixed cell from sheet use following trick:
+            put the sheet name and 
+            cell address in A1 notation, separated by a dot.            
+        </p>
+        <a><img src="../assets/step07.png" alt="step07 picture"></a>
+    </div>
+
     <div class="tutorial-item" style="grid-template-columns: 100%">
-        <p><b>6. </b>That is it. Upload two files to the
+        <p><b>8. </b>That is it. Upload two files to the
             workspace on this page,
-            press the
-            <!-- <button mat-raised-button class="button_single_on_row" (click)="data2doc()" style="min-width: 0px;
-        min-height: 0px; width:auto;">
-                Convert data 2 doc</button> button in the workspace or here, -->
-            enjoy the result.docx file.
+            press the big yellow button 
+            <button id="workit_button" mat-raised-button disabled class="button_single_on_row" 
+                style="min-width: 0px;min-height: 0px; width:auto;">
+                Convert data 2 doc</button>
+            and enjoy the result.docx file.
         </p>
     </div>
 </div>

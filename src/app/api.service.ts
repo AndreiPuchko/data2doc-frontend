@@ -42,6 +42,16 @@ export class ApiService {
     return this.http.get(this.apiURL + "examplefile/" + filetype, { responseType: 'blob' });
   }
 
+  public downloadGoogleSheetFile(fileId: string): any {
+    return this.http.get("https://docs.google.com/spreadsheets/d/"+fileId+"/export?exportFormat=xlsx", 
+            { responseType: 'blob' });
+  }
+
+  public downloadGoogleDocFile(fileId: string): any {
+    return this.http.get("https://docs.google.com/document/d/"+fileId+"/export?exportFormat=docx", 
+            { responseType: 'blob' });
+  }
+
   public sendFiles(fd, d2dtoken) {
     const httpOptions = {
       headers: new HttpHeaders({
