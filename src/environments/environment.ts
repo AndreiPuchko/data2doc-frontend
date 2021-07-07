@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:5002/',
-};
+  baseUrl: 'https://api.data2doc.net/',
+ };
 
 /*
+
+  baseUrl: 'http://localhost:5002/',
+
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *
